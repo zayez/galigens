@@ -5,10 +5,8 @@
   "description": "This project aims to use the NASA's API to display pictures of Mars that were taken from the rovers on the red planet.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "start": "webpack serve"
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
