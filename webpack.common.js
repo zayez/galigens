@@ -6,6 +6,9 @@ module.exports = {
   entry: {
     index: "./src/index.js",
   },
+  experiments: {
+    topLevelAwait: true,
+  },
 
   plugins: [
     new HtmlWebpackPlugin({
@@ -35,9 +38,17 @@ module.exports = {
         ],
       },
       {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
         test: /\.js$/,
         loader: "babel-loader",
         options: {
+          plugins: [
+            "@babel/plugin-syntax-top-level-await",
+            "@babel/plugin-transform-runtime",
+          ],
           presets: [
             [
               "@babel/preset-env",

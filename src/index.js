@@ -1,14 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import "./style.sss"
+import App from "./App"
 
-const App = () => {
-  return (
-    <div className="">
-      <h1>Welcome!</h1>
-    </div>
-  )
-}
+import "./style.sss"
 
 ReactDOM.render(<App />, document.querySelector("#root"))
