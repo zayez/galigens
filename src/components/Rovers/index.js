@@ -1,17 +1,17 @@
 import React from "react"
 import RoverList from "./RoverList"
+import EmptyList from "../common/EmptyList"
 
-import api from "../../api"
-const { getRovers } = api
-
-const rovers = await getRovers()
-
-const Rovers = () => {
-  return (
-    <div className="rovers">
-      <RoverList rovers={rovers} />
-    </div>
-  )
+const Rovers = ({ rovers }) => {
+  if (rovers.length > 0) {
+    return (
+      <div className="rovers">
+        <RoverList rovers={rovers} />
+      </div>
+    )
+  } else {
+    return <EmptyList />
+  }
 }
 
 export default Rovers
