@@ -10,11 +10,7 @@ const Rover = ({ selectedRover, setRover }) => {
 
   useEffect(() => {}, [selectedRover])
 
-  return (
-    <div className="rover">
-      <RoverDetails rover={selectedRover} />
-    </div>
-  )
+  return <RoverDetails rover={selectedRover} />
 }
 
 const mapStateToProps = (state) => {

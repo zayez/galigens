@@ -4,11 +4,7 @@ import EmptyList from "../common/EmptyList"
 
 const Rovers = ({ rovers }) => {
   if (rovers.length > 0) {
-    return (
-      <div className="rovers">
-        <RoverList rovers={rovers} />
-      </div>
-    )
+    return <RoverList rovers={rovers} />
   } else {
     return <EmptyList />
   }

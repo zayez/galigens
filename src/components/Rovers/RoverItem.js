@@ -14,10 +14,12 @@ const imageRovers = {
 const RoverItem = ({ rover }) => {
   return (
     <div className="rover-item">
-      <h2>
-        <Link to={`/rover/${rover.id}`}>{rover.name}</Link>
-      </h2>
-      <img src={imageRovers[rover.name.toLowerCase()]} />
+      <Link to={`/rover/${rover.id}`}>
+        <div className="rover-title">{rover.name}</div>
+        <div className="rover-image">
+          <img src={imageRovers[rover.name.toLowerCase()]} />
+        </div>
+      </Link>
     </div>
   )
 }

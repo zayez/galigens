@@ -11,7 +11,9 @@ const Home = ({ rovers = null, getRovers }) => {
   useEffect(() => {}, [rovers])
   return (
     <div className="home">
-      <Rovers rovers={rovers} />
+      <div className="container content-main">
+        <Rovers rovers={rovers} />
+      </div>
     </div>
   )
 }

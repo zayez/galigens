@@ -1,14 +1,17 @@
 import React from "react"
 import RoverItem from "./RoverItem"
-import "./style.sss"
+import "./rovers.sss"
 
 const RoverList = ({ rovers }) => {
   return (
-    <ul className="rovers-list">
-      {rovers.map((rover) => (
-        <RoverItem rover={rover} key={rover.id} />
-      ))}
-    </ul>
+    <div className="rovers">
+      <h1 className="heading">Rovers available</h1>
+      <ul className="rovers-list">
+        {rovers.map((rover) => (
+          <RoverItem rover={rover} key={rover.id} />
+        ))}
+      </ul>
+    </div>
   )
 }
 
