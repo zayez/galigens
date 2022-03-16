@@ -1,11 +1,35 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { connect } from "react-redux"
+import { selectRover } from "../../actions"
+import RoverDetails from "./RoverDetails"
 
-const Rover = ({ rover }) => {
+const Rover = ({ selectedRover, setRover }) => {
+  const { id } = useParams()
+  setRover(Number(id))
+
+  useEffect(() => {}, [selectedRover])
+
   return (
     <div className="rover">
-      <h2>rover</h2>
+      <RoverDetails rover={selectedRover} />
     </div>
   )
 }
 
-export default Rover
+const mapStateToProps = (state) => {
+  return {
+    rovers: state.rovers,
+    selectedRover: state.selectedRover,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setRover: (id) => {
+      dispatch(selectRover(id))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rover)
