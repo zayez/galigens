@@ -1,12 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
 import { fetchRovers } from "../reducers/rootReducer"
-import { useEffect } from "react"
 import Rovers from "../components/Rovers"
+import { useEffect } from "react"
 
-const Home = ({ rovers, getRovers }) => {
-  getRovers()
-
+const Home = ({ rovers = null, getRovers }) => {
+  useEffect(() => {
+    getRovers()
+  }, [])
   useEffect(() => {}, [rovers])
   return (
     <div className="home">
@@ -23,7 +24,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getRovers: async () => {
+    getRovers: () => {
       dispatch(fetchRovers())
     },
   }
