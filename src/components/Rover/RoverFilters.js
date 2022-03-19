@@ -1,4 +1,6 @@
 import React from "react"
+import { connect } from "react-redux"
+import { setEarthDate } from "../../actions"
 
 const RoverFilters = ({ rover, setDate }) => {
   return (
@@ -46,4 +48,18 @@ const RoverFilters = ({ rover, setDate }) => {
   )
 }
 
-export default RoverFilters
+const mapStateToProps = (state) => {
+  return {
+    earthDate: state.earthDate,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setDate: (date) => {
+      dispatch(setEarthDate(date))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoverFilters)

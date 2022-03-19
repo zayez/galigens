@@ -1,7 +1,5 @@
 import React from "react"
-import { connect } from "react-redux"
 // import { useNavigate } from "react-router-dom"
-import { setEarthDate } from "../../actions"
 import { getRoverImage } from "../../helpers/roverUtils"
 import Gallery from "../Gallery"
 import "./rover.sss"
@@ -27,7 +25,7 @@ const RoverPage = ({ rover, earthDate, setDate }) => {
             </div>
           </div>
           <div className="rover-page">
-            <RoverFilters rover={rover} setDate={setDate} />
+            <RoverFilters rover={rover} />
             <RoverDetails rover={rover} />
           </div>
           <div className="rover-gallery">
@@ -43,18 +41,4 @@ const RoverPage = ({ rover, earthDate, setDate }) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    earthDate: state.earthDate,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setDate: (date) => {
-      dispatch(setEarthDate(date))
-    },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RoverPage)
+export default RoverPage
