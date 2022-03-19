@@ -1,0 +1,34 @@
+.fields
+  display: flex
+  flex-wrap: wrap
+  flex-flow: column
+  padding: 2rem
+  /* border: 5px solid black */
+
+input[type="text"], input[type="date"], input[type="number"], select
+  display: inline-block
+  width: 100%
+  height: 2.5rem
+  border-radius: 0
+  border: 1px solid var(--black)
+
+
+.field
+  display: flex
+  align-items: center
+  &:not(:last-child)
+    margin-bottom: .75rem
+
+
+.field-label
+  flex-basis: 0
+  flex-grow: 2
+  flex-shrink: 0
+  margin-right: 0.5rem
+  text-align: right
+
+.field-body
+  display: flex
+  flex-basis: 0
+  flex-grow: 5
+  flex-shrink: 1

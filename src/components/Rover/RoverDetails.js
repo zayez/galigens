@@ -1,56 +1,37 @@
 import React from "react"
-import { connect } from "react-redux"
-// import { useNavigate } from "react-router-dom"
-import { setEarthDate } from "../../actions"
-import Gallery from "../Gallery"
-import "./rover.sss"
 
-const RoverDetails = ({ rover, earthDate, setDate }) => {
-  // const navigate = useNavigate()
-  // const goToPhotos = () => navigate("?earth_date=2022-3-10")
-  if (rover) {
-    return (
-      <div className="rover">
-        <div className="container">
-          <div className="rover-details">
-            <ul className="rover-details-list">
-              <li>Name: {rover.name}</li>
-              <li>Landing: {rover.landing_date}</li>
-              <li>Max date: {rover.max_date}</li>
-              <li>Total photos: {rover.total_photos}</li>
-            </ul>
-            <div className="avatar"></div>
-            <div className="inputs">
-              <input
-                type="date"
-                min={rover.landing_date}
-                max={rover.max_date}
-                onChange={(e) => setDate(e.target.value)}
-              ></input>
-              {/* <button onClick={goToPhotos}>Photos</button> */}
-            </div>
-            <Gallery rover={rover} earthDate={earthDate} />
-          </div>
-        </div>
+const RoverDetails = ({ rover }) => {
+  return (
+    <div className="rover-description">
+      <h3>Rover details:</h3>
+      <div className="desc">
+        <table className="rover-description-table">
+          <tbody>
+            <tr>
+              <td>Landing:</td>
+              <td>{rover.landing_date}</td>
+            </tr>
+            <tr>
+              <td>Last day:</td>
+              <td>{rover.max_date}</td>
+            </tr>
+            <tr>
+              <td>Last sol:</td>
+              <td>{rover.max_sol}</td>
+            </tr>
+            <tr>
+              <td>Total photos:</td>
+              <td>{rover.total_photos}</td>
+            </tr>
+            <tr>
+              <td>Status:</td>
+              <td>{rover.status}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    )
-  } else {
-    return <div className="">Loading</div>
-  }
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    earthDate: state.earthDate,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setDate: (date) => {
-      dispatch(setEarthDate(date))
-    },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RoverDetails)
+export default RoverDetails

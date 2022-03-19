@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { connect } from "react-redux"
 import { selectRover } from "../../actions"
-import RoverDetails from "./RoverDetails"
+import RoverPage from "./RoverPage"
 
 const Rover = ({ selectedRover, setRover }) => {
   const { id } = useParams()
@@ -10,7 +10,7 @@ const Rover = ({ selectedRover, setRover }) => {
 
   useEffect(() => {}, [selectedRover])
 
-  return <RoverDetails rover={selectedRover} />
+  return <RoverPage rover={selectedRover} />
 }
 
 const mapStateToProps = (state) => {
