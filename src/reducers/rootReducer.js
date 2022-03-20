@@ -9,7 +9,7 @@ import {
   SET_DATE_TYPE,
   SET_SOL,
 } from "../actions"
-import { EARTH_DAY } from "../types/DateTypes"
+import { EARTH_DAY } from "../types/DateType"
 
 const initState = {
   rovers: [],

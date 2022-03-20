@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { setDateType } from "../../actions"
-import { EARTH_DAY, SOL_DAY } from "../../types/DateTypes"
+import { EARTH_DAY, SOL_DAY } from "../../types/DateType"
 import CustomDate from "../common/CustomDate"
 
 const RoverFilters = ({ rover, dateType, onDateTypeChange }) => {

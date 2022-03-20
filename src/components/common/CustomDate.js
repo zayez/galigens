@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { setEarthDate, setSol } from "../../actions"
-import { EARTH_DAY } from "../../types/DateTypes"
+import { EARTH_DAY } from "../../types/DateType"
 
 const CustomDate = ({
   rover,
