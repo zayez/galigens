@@ -6,8 +6,8 @@ import "./navbar.sss"
 const Navbar = ({}) => {
   return (
     <nav className="navbar">
-      <div className="logo">
-        <h1>
+      <div className="logo-wrapper">
+        <h1 className="logo">
           <Link to="/">codename</Link>
         </h1>
       </div>
