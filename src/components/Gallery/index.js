@@ -5,12 +5,12 @@ import EmptyList from "../../components/common/EmptyList"
 import { fetchPhotos } from "../../reducers/rootReducer"
 import GalleryList from "./GalleryList"
 
-const Gallery = ({ photos, earthDate, getPhotos }) => {
+const Gallery = ({ photos, earthDate, sol, dateType, getPhotos }) => {
   // const [searchParams] = useSearchParams()
   // const earthDate = searchParams.get("earth_date")
   useEffect(() => {
     getPhotos()
-  }, [])
+  }, [earthDate, sol, dateType])
   useEffect(() => {}, [photos])
 
   if (photos.length > 0) {
@@ -27,6 +27,8 @@ const Gallery = ({ photos, earthDate, getPhotos }) => {
 const mapStateToProps = (state) => {
   return {
     earthDate: state.earthDate,
+    sol: state.sol,
+    dateType: state.dateType,
     photos: state.photos,
   }
 }

@@ -6,8 +6,11 @@ const getRovers = async () => {
   return data.rovers
 }
 
-const getPhotos = async ({ rover, earthDate = "2022-2-2", page = 1 }) => {
-  // const photosUrl = `${baseUrl}/rovers/${rover}/photos`
+const getPhotosByEarthDate = async ({
+  rover,
+  earthDate = "2022-2-2",
+  page = 1,
+}) => {
   const photosUrl = `${baseUrl}/photos`
   const params = `earth_date=${earthDate}&page=${page}`
   const url = `${photosUrl}?${params}`
@@ -18,9 +21,21 @@ const getPhotos = async ({ rover, earthDate = "2022-2-2", page = 1 }) => {
   return data.photos
 }
 
+const getPhotosBySol = async ({ rover, sol = 1, page = 1 }) => {
+  const photosUrl = `${baseUrl}/photos`
+  const params = `sol=${sol}&page=${page}`
+  const url = `${photosUrl}?${params}`
+
+  const res = await fetch(url)
+  const data = await res.json()
+
+  return data.photos
+}
+
 const mockAPI = {
   getRovers,
-  getPhotos,
+  getPhotosByEarthDate,
+  getPhotosBySol,
 }
 
 export default mockAPI

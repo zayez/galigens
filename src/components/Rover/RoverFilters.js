@@ -1,34 +1,31 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setEarthDate } from "../../actions"
+import { setDateType } from "../../actions"
+import { EARTH_DAY, SOL_DAY } from "../../types/DateTypes"
+import CustomDate from "../common/CustomDate"
 
-const RoverFilters = ({ rover, setDate }) => {
+const RoverFilters = ({ rover, dateType, onDateTypeChange }) => {
   return (
     <div className="rover-filters">
       <h3>Filters:</h3>
 
       <div className="fields">
-        <div className="field">
-          <div className="field-label">
-            <label>Earth date:</label>
-          </div>
-          <div className="field-body">
-            <input
-              type="date"
-              min={rover.landing_date}
-              max={rover.max_date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-            {/* <button onClick={goToPhotos}>Photos</button> */}
-          </div>
-        </div>
+        <CustomDate type={dateType} rover={rover} />
 
         <div className="field">
           <div className="field-label">
-            <label>Sol:</label>
+            <label htmlFor="">Date type:</label>
           </div>
           <div className="field-body">
-            <input type="number" />
+            <select
+              name=""
+              id=""
+              value={dateType}
+              onChange={(e) => onDateTypeChange(e.target.value)}
+            >
+              <option value={EARTH_DAY}>Earth day</option>
+              <option value={SOL_DAY}>Sol (day on mars)</option>
+            </select>
           </div>
         </div>
 
@@ -50,14 +47,14 @@ const RoverFilters = ({ rover, setDate }) => {
 
 const mapStateToProps = (state) => {
   return {
-    earthDate: state.earthDate,
+    dateType: state.dateType,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setDate: (date) => {
-      dispatch(setEarthDate(date))
+    onDateTypeChange: (type) => {
+      dispatch(setDateType(type))
     },
   }
 }
