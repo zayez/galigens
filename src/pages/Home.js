@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { fetchRovers } from "../reducers/rootReducer"
+import { fetchRovers } from "../actions/roversActions"
 import Rovers from "../components/Rovers"
 import { useEffect } from "react"
 
@@ -20,7 +20,7 @@ const Home = ({ rovers = null, getRovers }) => {
 
 const mapStateToProps = (state) => {
   return {
-    rovers: state.rovers,
+    rovers: state.rovers.rovers,
   }
 }
 

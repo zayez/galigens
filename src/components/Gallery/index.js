@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import EmptyList from "../../components/common/EmptyList"
-import { fetchPhotos, fetchMorePhotos } from "../../reducers/rootReducer"
+import { fetchPhotos, fetchMorePhotos } from "../../actions/photosActions"
 // import { useSearchParams } from "react-router-dom"
 
 import { EARTH_DAY } from "../../types/DateType"
@@ -11,7 +11,6 @@ const Gallery = ({
   photos,
   earthDate,
   sol,
-  camera,
   dateType,
   getPhotos,
   getMorePhotos,
@@ -40,11 +39,11 @@ const Gallery = ({
 
 const mapStateToProps = (state) => {
   return {
-    earthDate: state.earthDate,
-    sol: state.sol,
-    camera: state.camera,
-    dateType: state.dateType,
-    photos: state.photos,
+    earthDate: state.filters.earthDate,
+    sol: state.filters.sol,
+    camera: state.filters.camera,
+    dateType: state.filters.dateType,
+    photos: state.photos.photos,
   }
 }
 

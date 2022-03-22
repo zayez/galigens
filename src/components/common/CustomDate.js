@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setEarthDate, setSol } from "../../actions"
+import { setEarthDate, setSol } from "../../actions/filtersActions"
 import { EARTH_DAY } from "../../types/DateType"
 
 const CustomDate = ({
@@ -20,8 +20,8 @@ const CustomDate = ({
 
 const mapStateToProps = (state) => {
   return {
-    earthDate: state.earthDate,
-    sol: state.sol,
+    earthDate: state.filters.earthDate,
+    sol: state.filters.sol,
   }
 }
 

@@ -7,7 +7,7 @@ import "../../styles/components/forms.sss"
 import RoverFilters from "./RoverFilters"
 import RoverDetails from "./RoverDetails"
 
-const RoverPage = ({ rover, earthDate, setDate }) => {
+const RoverPage = ({ rover, earthDate }) => {
   // const navigate = useNavigate()
   // const goToPhotos = () => navigate("?earth_date=2022-3-10")
   if (rover) {

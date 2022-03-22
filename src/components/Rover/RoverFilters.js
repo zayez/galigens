@@ -1,10 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setCamera, setDateType } from "../../actions"
+import { setCamera, setDateType } from "../../actions/filtersActions"
 import { EARTH_DAY, SOL_DAY } from "../../types/DateType"
 import CustomDate from "../common/CustomDate"
 
-import { fetchPhotos } from "../../reducers/rootReducer"
+import { fetchPhotos } from "../../actions/photosActions"
 
 const RoverFilters = ({
   rover,
@@ -75,8 +75,8 @@ const RoverFilters = ({
 
 const mapStateToProps = (state) => {
   return {
-    dateType: state.dateType,
-    camera: state.camera,
+    dateType: state.filters.dateType,
+    camera: state.filters.camera,
   }
 }
 
