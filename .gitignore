@@ -4,3 +4,4 @@ build/
 credentials.json
 assets/
 public/
+src/types/CameraTypes.js
