@@ -8,6 +8,9 @@ import {
   getPhotos,
   SET_DATE_TYPE,
   SET_SOL,
+  SET_CAMERA,
+  GET_MORE_PHOTOS,
+  getMorePhotos,
 } from "../actions"
 import { EARTH_DAY } from "../types/DateType"
 
@@ -18,6 +21,7 @@ const initState = {
   sol: "",
   page: 1,
   dateType: EARTH_DAY,
+  camera: "",
 }
 
 export const rootReducer = (state = initState, action) => {
@@ -30,11 +34,15 @@ export const rootReducer = (state = initState, action) => {
         photos: [],
         earthDate: "",
         sol: "",
+        camera: "",
       }
     case SELECT_ROVER:
+      const selectedRover = state.rovers.find((r) => r.id === action.payload)
       return {
         ...state,
-        selectedRover: state.rovers.find((r) => r.id === action.payload),
+        selectedRover,
+        earthDate: selectedRover.max_date,
+        sol: selectedRover.max_sol,
         page: 1,
         photos: [],
       }
@@ -43,16 +51,20 @@ export const rootReducer = (state = initState, action) => {
         ...state,
         earthDate: action.payload,
         page: 1,
-        photos: [],
       }
     case SET_SOL:
       return {
         ...state,
         sol: action.payload,
         page: 1,
-        photos: [],
       }
     case GET_PHOTOS:
+      return {
+        ...state,
+        photos: [...action.payload],
+        page: 2,
+      }
+    case GET_MORE_PHOTOS:
       return {
         ...state,
         photos: [...state.photos, ...action.payload],
@@ -63,31 +75,56 @@ export const rootReducer = (state = initState, action) => {
         ...state,
         dateType: action.payload,
       }
+    case SET_CAMERA:
+      return {
+        ...state,
+        camera: action.payload,
+        page: 1,
+      }
   }
   return state
 }
 
 export const fetchRovers = () => async (dispatch, getState) => {
-  const rovers = await api.getRovers()
-  dispatch(getRovers(rovers))
+  const rawRovers = await api.getRovers()
+  // const rovers = rawRovers.map((rover) => {
+  //   const newRover = rover
+  //   rover.cameras = Cameras.filter((camera) => {
+  //     return rover.cameras.some((r) => r.name === camera.abbr)
+  //   })
+  //   return newRover
+  // })
+
+  dispatch(getRovers(rawRovers))
 }
 
 export const fetchPhotos = () => async (dispatch, getState) => {
   const state = getState()
-  const { selectedRover, earthDate, sol, page, dateType } = state
-  const rover = selectedRover.name.toLowerCase()
+  const { selectedRover, earthDate, sol, camera, dateType } = state
+  const roverName = selectedRover.name.toLowerCase()
+  const photos = await api.getPhotos({
+    roverName,
+    earthDate,
+    sol,
+    camera,
+    dateType,
+  })
 
-  const photos =
-    dateType === EARTH_DAY
-      ? await api.getPhotosByEarthDate({
-          rover,
-          earthDate,
-          page,
-        })
-      : await api.getPhotosBySol({
-          rover,
-          sol,
-          page,
-        })
   dispatch(getPhotos(photos))
+}
+
+export const fetchMorePhotos = () => async (dispatch, getState) => {
+  const state = getState()
+  const { selectedRover, earthDate, sol, camera, page, dateType } = state
+  const roverName = selectedRover.name.toLowerCase()
+  const photos = await api.getPhotos({
+    roverName,
+    earthDate,
+    sol,
+    camera,
+    dateType,
+    page,
+  })
+
+  dispatch(getMorePhotos(photos))
 }

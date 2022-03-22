@@ -3,7 +3,9 @@ export const SELECT_ROVER = "SELECT_ROVER"
 export const SET_EARTH_DATE = "SET_EARTH_DATE"
 export const SET_SOL = "SET_SOL"
 export const GET_PHOTOS = "GET_PHOTOS"
+export const GET_MORE_PHOTOS = "GET_MORE_PHOTOS"
 export const SET_DATE_TYPE = "SET_DATE_TYPE"
+export const SET_CAMERA = "SET_CAMERA"
 
 export const getRovers = (rovers) => ({
   type: GET_ROVERS,
@@ -30,7 +32,17 @@ export const getPhotos = (photos) => ({
   payload: photos,
 })
 
+export const getMorePhotos = (photos) => ({
+  type: GET_MORE_PHOTOS,
+  payload: photos,
+})
+
 export const setDateType = (type) => ({
   type: SET_DATE_TYPE,
   payload: type,
+})
+
+export const setCamera = (name) => ({
+  type: SET_CAMERA,
+  payload: name,
 })

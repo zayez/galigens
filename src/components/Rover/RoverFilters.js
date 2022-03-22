@@ -1,10 +1,19 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setDateType } from "../../actions"
+import { setCamera, setDateType } from "../../actions"
 import { EARTH_DAY, SOL_DAY } from "../../types/DateType"
 import CustomDate from "../common/CustomDate"
 
-const RoverFilters = ({ rover, dateType, onDateTypeChange }) => {
+import { fetchPhotos } from "../../reducers/rootReducer"
+
+const RoverFilters = ({
+  rover,
+  camera,
+  dateType,
+  onDateTypeChange,
+  onCameraChange,
+  onSearchClick,
+}) => {
   return (
     <div className="rover-filters">
       <h3>Filters:</h3>
@@ -34,10 +43,29 @@ const RoverFilters = ({ rover, dateType, onDateTypeChange }) => {
             <label htmlFor="">Camera:</label>
           </div>
           <div className="field-body">
-            <select name="" id="">
-              <option value="1"></option>
-              <option value="2"></option>
+            <select
+              name=""
+              id=""
+              value={camera}
+              onChange={(e) => onCameraChange(e.target.value)}
+            >
+              <option key="0" value="">
+                All
+              </option>
+              {rover.cameras.map((camera) => (
+                <option value={camera.name} key={camera.id}>
+                  {`${camera.full_name} (${camera.name})`}{" "}
+                </option>
+              ))}
             </select>
+          </div>
+        </div>
+        <div className="field">
+          <div className="field-label"></div>
+          <div className="field-body">
+            <button className="btn" onClick={onSearchClick}>
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -48,6 +76,7 @@ const RoverFilters = ({ rover, dateType, onDateTypeChange }) => {
 const mapStateToProps = (state) => {
   return {
     dateType: state.dateType,
+    camera: state.camera,
   }
 }
 
@@ -55,6 +84,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onDateTypeChange: (type) => {
       dispatch(setDateType(type))
+    },
+
+    onCameraChange: (name) => {
+      dispatch(setCamera(name))
+    },
+
+    onSearchClick: async () => {
+      dispatch(fetchPhotos())
     },
   }
 }

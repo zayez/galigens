@@ -2,7 +2,7 @@ import React from "react"
 import GalleryItem from "./GalleryItem"
 import "./gallery.sss"
 
-const GalleryList = ({ photos, getPhotos }) => {
+const GalleryList = ({ photos, getMorePhotos }) => {
   return (
     <div className="gallery-wrapper">
       <ul className="gallery-list">
@@ -10,7 +10,7 @@ const GalleryList = ({ photos, getPhotos }) => {
           <GalleryItem photo={photo} key={photo.id} />
         ))}
       </ul>
-      <button onClick={getPhotos}>Load more</button>
+      <button onClick={getMorePhotos}>Load more</button>
     </div>
   )
 }
