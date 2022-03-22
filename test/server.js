@@ -18,13 +18,19 @@ app.get("/rovers", cors(), (req, res) => {
   res.json({ rovers })
 })
 
-app.get("/photos", cors(), (req, res) => {
+app.get("/rovers/:roverName/photos", cors(), (req, res) => {
   const LIMIT = 5
+  const rover = req.params.roverName
+
+  const earthDate = req.query.earth_date
+  const sol = req.query.sol
+  const camera = req.query.camera
   const page = Number(req.query.page)
+  const params = { earthDate, sol, camera, page }
 
   const photos = photosData.photos.slice((page - 1) * LIMIT, LIMIT * page)
 
-  res.json({ photos })
+  res.json({ photos, params })
 })
 
 app.listen(port, () => {
