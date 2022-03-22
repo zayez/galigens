@@ -1,6 +1,7 @@
 const baseUrl = `https://api.nasa.gov/mars-photos/api/v1`
 import credentials from "../../credentials.json"
 const api_key = credentials.api_key
+import { EARTH_DAY } from "../types/DateType"
 
 const getRovers = async () => {
   try {
@@ -15,30 +16,29 @@ const getRovers = async () => {
   }
 }
 
-const getPhotosByEarthDate = async ({
-  rover,
-  earthDate = "2022-03-08",
+const getPhotos = async ({
+  roverName,
+  earthDate,
+  sol,
+  camera,
   page = 1,
+  dateType = EARTH_DAY,
 }) => {
-  const url = `${baseUrl}/rovers/${rover}/photos?earth_date=${earthDate}&page=${page}&api_key=${api_key}`
-  console.log(url)
-  const res = await fetch(url)
-  const data = await res.json()
-  return data.photos
-}
+  const basePhotosUrl = `${baseUrl}/rovers/${roverName}`
+  const dateParam =
+    dateType === EARTH_DAY ? `earth_date=${earthDate}` : `sol=${sol}`
+  const params = camera !== "" ? `&camera=${camera}` : ""
+  const photosUrl = `${basePhotosUrl}/photos?${dateParam}${params}&page=${page}&api_key=${api_key}`
+  console.log(`url: ${photosUrl}`)
 
-const getPhotosBySol = async ({ rover, sol = 1, page = 1 }) => {
-  const url = `${baseUrl}/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${api_key}`
-  console.log(url)
-  const res = await fetch(url)
+  const res = await fetch(photosUrl)
   const data = await res.json()
   return data.photos
 }
 
 const realAPI = {
   getRovers,
-  getPhotosByEarthDate,
-  getPhotosBySol,
+  getPhotos,
 }
 
 export default realAPI

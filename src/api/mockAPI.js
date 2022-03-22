@@ -1,4 +1,6 @@
 const baseUrl = `http://localhost:3000`
+import { EARTH_DAY } from "../types/DateType"
+
 const getRovers = async () => {
   const url = `${baseUrl}/rovers`
   const res = await fetch(url)
@@ -6,36 +8,28 @@ const getRovers = async () => {
   return data.rovers
 }
 
-const getPhotosByEarthDate = async ({
-  rover,
-  earthDate = "2022-2-2",
+const getPhotos = async ({
+  roverName,
+  earthDate,
+  sol,
+  camera,
   page = 1,
+  dateType = EARTH_DAY,
 }) => {
-  const photosUrl = `${baseUrl}/photos`
-  const params = `earth_date=${earthDate}&page=${page}`
-  const url = `${photosUrl}?${params}`
+  const basePhotosUrl = `${baseUrl}/rovers/${roverName}`
+  const dateParam =
+    dateType === EARTH_DAY ? `earth_date=${earthDate}` : `sol=${sol}`
+  const params = camera ? `&camera=${camera}` : ""
+  const photosUrl = `${basePhotosUrl}/photos?${dateParam}${params}&page=${page}`
 
-  const res = await fetch(url)
+  const res = await fetch(photosUrl)
   const data = await res.json()
-
-  return data.photos
-}
-
-const getPhotosBySol = async ({ rover, sol = 1, page = 1 }) => {
-  const photosUrl = `${baseUrl}/photos`
-  const params = `sol=${sol}&page=${page}`
-  const url = `${photosUrl}?${params}`
-
-  const res = await fetch(url)
-  const data = await res.json()
-
   return data.photos
 }
 
 const mockAPI = {
   getRovers,
-  getPhotosByEarthDate,
-  getPhotosBySol,
+  getPhotos,
 }
 
 export default mockAPI
