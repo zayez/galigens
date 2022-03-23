@@ -1,11 +1,16 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import EmptyList from "../../components/common/EmptyList"
-import { fetchPhotos, fetchMorePhotos } from "../../actions/photosActions"
-// import { useSearchParams } from "react-router-dom"
+import Overlay from "../Overlay"
+import {
+  fetchPhotos,
+  fetchMorePhotos,
+  openPhoto,
+} from "../../actions/photosActions"
 
 import { EARTH_DAY } from "../../types/DateType"
 import GalleryList from "./GalleryList"
+import OverlayPhoto from "../Overlay/OverlayPhoto"
 
 const Gallery = ({
   photos,
@@ -14,9 +19,9 @@ const Gallery = ({
   dateType,
   getPhotos,
   getMorePhotos,
+  openedPhoto,
+  onPhotoClick,
 }) => {
-  // const [searchParams] = useSearchParams()
-  // const earthDate = searchParams.get("earth_date")
   useEffect(() => {
     if (dateType === EARTH_DAY) {
       if (earthDate !== "") getPhotos()
@@ -29,7 +34,14 @@ const Gallery = ({
   if (photos.length > 0) {
     return (
       <div className="gallery">
-        <GalleryList photos={photos} getMorePhotos={getMorePhotos} />
+        <Overlay>
+          <OverlayPhoto photoSrc={openedPhoto} />
+        </Overlay>
+        <GalleryList
+          photos={photos}
+          getMorePhotos={getMorePhotos}
+          onPhotoClick={onPhotoClick}
+        />
       </div>
     )
   } else {
@@ -44,6 +56,7 @@ const mapStateToProps = (state) => {
     camera: state.filters.camera,
     dateType: state.filters.dateType,
     photos: state.photos.photos,
+    openedPhoto: state.photos.openedPhoto,
   }
 }
 
@@ -54,6 +67,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     getMorePhotos: async () => {
       dispatch(fetchMorePhotos())
+    },
+
+    onPhotoClick: (e) => {
+      e.preventDefault()
+      const photo = e.target.src
+      dispatch(openPhoto(photo))
     },
   }
 }
