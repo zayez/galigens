@@ -30,7 +30,6 @@ const RoverPage = ({ rover, earthDate }) => {
           </div>
           <div className="rover-gallery">
             <h3>Rover gallery</h3>
-            <hr />
             <Gallery rover={rover} earthDate={earthDate} />
           </div>
         </div>
