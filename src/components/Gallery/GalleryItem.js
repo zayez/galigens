@@ -6,7 +6,7 @@ const GalleryItem = ({ photo, onClick }) => {
       <a href={photo.img_src} onClick={onClick}>
         <img src={photo.img_src} />
       </a>
-      <span>{photo.id}</span>
+      {/* <span>{photo.id}</span> */}
     </div>
   )
 }

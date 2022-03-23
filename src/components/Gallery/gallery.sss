@@ -5,14 +5,19 @@
 .gallery-list
   display: flex
   flex-wrap: wrap
-  padding: 1em
+  justify-content: space-evenly
+  align-items: center
+  margin-top: 1rem
 
 .gallery-item
   display: flex
   flex-flow: column
-  border: 1px solid yellow
 
 .gallery-item >
 a > img
   max-width: 250px
-  padding: 1em
+  padding: .5em
+  border: 1px solid transparent
+
+  &:hover
+    border: 1px solid var(--header-bg)
