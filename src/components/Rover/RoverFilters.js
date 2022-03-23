@@ -63,7 +63,7 @@ const RoverFilters = ({
         <div className="field">
           <div className="field-label"></div>
           <div className="field-body">
-            <button className="btn" onClick={onSearchClick}>
+            <button className="btn btn-major" onClick={onSearchClick}>
               Search
             </button>
           </div>

@@ -10,7 +10,11 @@ const GalleryList = ({ photos, getMorePhotos, onPhotoClick }) => {
           <GalleryItem photo={photo} key={photo.id} onClick={onPhotoClick} />
         ))}
       </ul>
-      <button onClick={getMorePhotos}>Load more</button>
+      <div className="row">
+        <button className="btn btn-alternate btn-full" onClick={getMorePhotos}>
+          Load more
+        </button>
+      </div>
     </div>
   )
 }
