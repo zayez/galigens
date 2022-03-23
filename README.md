@@ -1,4 +1,4 @@
-# Project
+# Galigens
 
 This project aims to use the NASA's API to display pictures of Mars that were taken from the rovers on the red planet.
 
@@ -34,6 +34,9 @@ npm start
 ## References
 
 [Mars Curiosity Rover mission](https://mars.nasa.gov/msl/home/)
+
 [Opportunity Rover mission](https://www.jpl.nasa.gov/missions/mars-exploration-rover-opportunity-mer)
+
 [Spirit Rover mission](https://www.jpl.nasa.gov/missions/mars-exploration-rover-spirit-mer-spirit)
+
 [ Perseverance Rover mission](https://www.jpl.nasa.gov/missions/mars-2020-perseverance-rover)
