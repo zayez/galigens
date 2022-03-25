@@ -8,13 +8,16 @@ import RoverPage from "./RoverPage"
 
 const Rover = ({ selectedRover, setRover, initializeFilters }) => {
   const { id } = useParams()
-  setRover(Number(id))
 
-  if (selectedRover) {
-    initializeFilters(selectedRover)
-  }
+  useEffect(() => {
+    setRover(Number(id))
+  }, [])
 
-  useEffect(() => {}, [selectedRover])
+  useEffect(() => {
+    if (selectedRover) {
+      initializeFilters(selectedRover)
+    }
+  }, [selectedRover])
 
   return <RoverPage rover={selectedRover} />
 }
