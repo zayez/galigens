@@ -37,7 +37,6 @@ const photosReducer = (state = initialState, action) => {
       return {
         ...state,
         hasOpenedPhoto: false,
-        openedPhoto: "",
       }
   }
   return state

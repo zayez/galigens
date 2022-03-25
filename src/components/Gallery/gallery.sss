@@ -5,13 +5,14 @@
 .gallery-list
   display: flex
   flex-wrap: wrap
-  justify-content: space-evenly
+  justify-content: flex-start
   align-items: center
   margin-top: 1rem
 
 .gallery-item
   display: flex
   flex-flow: column
+  z-index: 4
 
 .gallery-item >
 a > img
@@ -21,3 +22,19 @@ a > img
 
   &:hover
     border: 1px solid var(--header-bg)
+
+/* Transition animations */
+.gallery-item-enter
+  opacity: 0
+
+.gallery-item-enter-active
+  opacity: 1
+  transition: opacity var(--base-transition-time)
+
+.gallery-item-exit
+  opacity: 1
+  display: none
+
+.gallery-item-exit-active
+  opacity: 0
+  transition: opacity var(--base-transition-time)

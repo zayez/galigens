@@ -1,15 +1,18 @@
 import React from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import GalleryItem from "./GalleryItem"
 import "./gallery.sss"
 
 const GalleryList = ({ photos, getMorePhotos, onPhotoClick }) => {
   return (
     <div className="gallery-wrapper">
-      <ul className="gallery-list">
+      <TransitionGroup className="gallery-list" component="ul">
         {photos.map((photo) => (
-          <GalleryItem photo={photo} key={photo.id} onClick={onPhotoClick} />
+          <CSSTransition key={photo.id} timeout={600} classNames="gallery-item">
+            <GalleryItem photo={photo} key={photo.id} onClick={onPhotoClick} />
+          </CSSTransition>
         ))}
-      </ul>
+      </TransitionGroup>
       <div className="row">
         <button className="btn btn-alternate btn-full" onClick={getMorePhotos}>
           Load more

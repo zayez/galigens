@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import EmptyList from "../../components/common/EmptyList"
 import Overlay from "../Overlay"
+
 import {
   fetchPhotos,
   fetchMorePhotos,
@@ -37,6 +38,7 @@ const Gallery = ({
         <Overlay>
           <OverlayPhoto photoSrc={openedPhoto} />
         </Overlay>
+
         <GalleryList
           photos={photos}
           getMorePhotos={getMorePhotos}
