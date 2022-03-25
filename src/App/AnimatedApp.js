@@ -2,6 +2,7 @@ import React from "react"
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { TransitionGroup } from "react-transition-group"
+import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Rover from "../components/Rover"
 import Rovers from "../components/Rovers"
@@ -33,6 +34,7 @@ const App = () => {
       <HashRouter>
         <Header />
         <AnimatedApp />
+        <Footer />
       </HashRouter>
     </div>
   )
