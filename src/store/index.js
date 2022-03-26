@@ -3,14 +3,23 @@ import thunk from "redux-thunk"
 import rootReducer from "../reducers"
 import { saveState, loadState } from "./storage"
 import throttle from "lodash/throttle"
+import { composeWithDevTools } from "redux-devtools-extension"
 
 const persistedState = loadState()
 
-const store = createStore(rootReducer, persistedState, applyMiddleware(thunk))
+// raw store
+// const store = createStore(rootReducer, persistedState, applyMiddleware(thunk))
+
+// devtools store
+const store = createStore(
+  rootReducer,
+  persistedState,
+  composeWithDevTools(applyMiddleware(thunk))
+)
 
 store.subscribe(
   throttle(() => {
-    logState(store.getState())
+    // logState(store.getState())
     saveState(store.getState())
   }, 1000)
 )
