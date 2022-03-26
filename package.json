@@ -11,8 +11,8 @@
     "test:server": "nodemon test/server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "zayez",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
