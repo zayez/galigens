@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { setEarthDate, setSol } from "../../actions/filtersActions"
-import { isNumberKey } from "../../helpers/keyboardUtils"
+import { isValidNumericKey } from "../../helpers/keyboardUtils"
 import { EARTH_DAY } from "../../types/DateType"
 
 const CustomDate = ({
@@ -60,7 +60,8 @@ const SolDate = ({ sol, min, max, setSol }) => {
           min={min}
           max={max}
           value={sol}
-          onKeyDown={(e) => isNumberKey(e)}
+          onAuxClick={(e) => e.preventDefault()}
+          onKeyDown={(e) => isValidNumericKey(e)}
           onChange={(e) => {
             const value = e.target.value
             if (!(value < min || value > max)) {
