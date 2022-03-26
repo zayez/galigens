@@ -1,5 +1,6 @@
 import api from "../api"
 export const GET_PHOTOS = "GET_PHOTOS"
+export const RESET_PHOTOS = "RESET_PHOTOS"
 export const GET_MORE_PHOTOS = "GET_MORE_PHOTOS"
 export const OPEN_PHOTO = "OPEN_PHOTO"
 export const CLOSE_PHOTO = "CLOSE_PHOTO"
@@ -16,6 +17,10 @@ export const closePhoto = () => ({
 const getPhotos = (photos) => ({
   type: GET_PHOTOS,
   payload: photos,
+})
+
+export const resetPhotos = () => ({
+  type: RESET_PHOTOS,
 })
 
 const getMorePhotos = (photos) => ({

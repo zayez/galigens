@@ -1,10 +1,16 @@
 import api from "../api"
+import { resetPhotos } from "./photosActions"
 
-export const GET_ROVERS = "GET_ROVERS"
+export const GET_ROVERS = "GET_ROVERS_REQUEST"
+export const GET_ROVERS_SUCCESS = "GET_ROVERS_SUCCESS"
 export const SELECT_ROVER = "SELECT_ROVER"
 
-const getRovers = (rovers) => ({
+const getRovers = () => ({
   type: GET_ROVERS,
+})
+
+const getRoversSuccess = (rovers) => ({
+  type: GET_ROVERS_SUCCESS,
   payload: rovers,
 })
 
@@ -14,6 +20,8 @@ export const selectRover = (id) => ({
 })
 
 export const fetchRovers = () => async (dispatch, getState) => {
+  dispatch(getRovers())
+  dispatch(resetPhotos())
   const rawRovers = await api.getRovers()
-  dispatch(getRovers(rawRovers))
+  dispatch(getRoversSuccess(rawRovers))
 }

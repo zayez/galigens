@@ -3,6 +3,7 @@ import {
   GET_MORE_PHOTOS,
   GET_PHOTOS,
   OPEN_PHOTO,
+  RESET_PHOTOS,
 } from "../actions/photosActions"
 
 const initialState = {
@@ -14,6 +15,12 @@ const initialState = {
 
 const photosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case RESET_PHOTOS:
+      return {
+        photos: [],
+        page: 1,
+        hasOpenedPhoto: false,
+      }
     case GET_PHOTOS:
       return {
         ...state,
