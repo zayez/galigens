@@ -1,5 +1,5 @@
 import api from "../api"
-import { resetPhotos } from "./photosActions"
+import { setFilters } from "./filtersActions"
 
 export const GET_ROVERS = "GET_ROVERS_REQUEST"
 export const GET_ROVERS_SUCCESS = "GET_ROVERS_SUCCESS"
@@ -21,7 +21,7 @@ export const selectRover = (id) => ({
 
 export const fetchRovers = () => async (dispatch, getState) => {
   dispatch(getRovers())
-  dispatch(resetPhotos())
+  dispatch(setFilters({}))
   const rawRovers = await api.getRovers()
   dispatch(getRoversSuccess(rawRovers))
 }

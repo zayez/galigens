@@ -28,8 +28,8 @@ export const setCamera = (name) => ({
 })
 
 export const setFilters = ({
-  earthDate,
-  sol,
+  earthDate = "",
+  sol = "",
   camera = "",
   dateType = EARTH_DAY,
 }) => ({
