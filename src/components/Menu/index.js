@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./menu.sss"
 
 const Menu = ({ orientation = "horizontal" }) => {
@@ -6,13 +7,13 @@ const Menu = ({ orientation = "horizontal" }) => {
   return (
     <ul className={menuStyles}>
       <li>
-        <a href="#">Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a href="#">Rovers</a>
+        <Link to="/rovers">Rovers</Link>
       </li>
       <li>
-        <a href="#">About</a>
+        <Link to="/about">About</Link>
       </li>
     </ul>
   )
