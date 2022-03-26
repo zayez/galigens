@@ -16,9 +16,9 @@ store.subscribe(
 )
 
 const logState = (state) => {
-  const { rovers } = state.rovers
-  const { filters } = state.filters
-  const { photos } = state.photos
+  const { rovers } = state
+  const { filters } = state
+  const { photos } = state
   console.log(rovers)
   console.log(filters)
   console.log(photos)
