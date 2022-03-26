@@ -19,7 +19,6 @@ const RoverFilters = ({
 }) => {
   return (
     <div className="rover-filters">
-      <h3>Filters:</h3>
       <form onSubmit={onSearchClick}>
         <div className="fields">
           <CustomDate

@@ -1,20 +1,24 @@
 .rovers-list
+  /* display: flex
+  flex-wrap: wrap */
+
   display: flex
-  justify-content: center
-  align-items: center
+  flex-direction: row
   flex-wrap: wrap
+  width: 100%
 
 .rover-item
-  flex: 50%
-  text-align: center
-  border: 1px solid transparent
-  padding: 2rem 1rem
+  display: flex
+  flex-direction: column
+  /* flex-basis: 100% */
+  /* flex: 1 */
+  cursor: pointer
 
   & img
-    border: 1px solid black
+    /* border: 1px solid black */
 
     &:hover
-      border: 1px solid yellow
+      /* border: 1px solid yellow */
 
   & a
     &:hover
@@ -26,3 +30,24 @@
 
 .rover-title
   font-size: 1.5em
+
+
+.card
+  border: 3px solid var(--gray)
+  margin: 1rem 0.5rem
+  /* margin */
+  display: flex
+
+  &:hover
+    border-color: var(--red)
+
+.card-image
+  /* width: 50% */
+  /* flex-basis: 0 */
+  /* flex-grow: 1 */
+  text-align: right
+
+.card-content
+  padding: 1rem
+  /* flex-basis: 0 */
+  /* flex-grow: 1 */

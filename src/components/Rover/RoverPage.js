@@ -1,15 +1,11 @@
 import React from "react"
-// import { useNavigate } from "react-router-dom"
 import { getRoverImage } from "../../helpers/roverUtils"
 import Gallery from "../Gallery"
 import "./rover.sss"
 import "../../styles/components/forms.sss"
 import RoverFilters from "./RoverFilters"
-import RoverDetails from "./RoverDetails"
 
 const RoverPage = ({ rover, earthDate }) => {
-  // const navigate = useNavigate()
-  // const goToPhotos = () => navigate("?earth_date=2022-3-10")
   if (rover) {
     return (
       <div className="rover">
@@ -26,7 +22,6 @@ const RoverPage = ({ rover, earthDate }) => {
           </div>
           <div className="rover-page">
             <RoverFilters rover={rover} />
-            <RoverDetails rover={rover} />
           </div>
           <div className="rover-gallery">
             <h3>Rover gallery</h3>
