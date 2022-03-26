@@ -1,25 +1,27 @@
 .rovers-list
-  /* border: 1px solid red */
   display: flex
-  /* justify-content: center */
-  /* flex: 1 */
   justify-content: center
+  align-items: center
   flex-wrap: wrap
 
-
 .rover-item
+  flex: 50%
+  text-align: center
   border: 1px solid transparent
-  padding: 1rem 1rem
+  padding: 2rem 1rem
 
-  &:hover
+  & img
     border: 1px solid black
+
+    &:hover
+      border: 1px solid yellow
 
   & a
     &:hover
       text-decoration: none
+
     & img
       max-height: 12em
-
       text-align: center
 
 .rover-title
