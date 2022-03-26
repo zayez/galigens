@@ -1,10 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import { setEarthDate, setSol } from "../../actions/filtersActions"
+import { isNumberKey } from "../../helpers/keyboardUtils"
 import { EARTH_DAY } from "../../types/DateType"
 
 const CustomDate = ({
-  rover,
+  minDate,
+  maxDate,
+  minSol,
+  maxSol,
   type,
   txtEarthDate,
   txtSol,
@@ -12,9 +16,14 @@ const CustomDate = ({
   onSolChange,
 }) => {
   return type === EARTH_DAY ? (
-    <EarthDate rover={rover} setDate={onEarthDateChange} date={txtEarthDate} />
+    <EarthDate
+      date={txtEarthDate}
+      min={minDate}
+      max={maxDate}
+      setDate={onEarthDateChange}
+    />
   ) : (
-    <SolDate rover={rover} setSol={onSolChange} sol={txtSol} />
+    <SolDate sol={txtSol} min={minSol} max={maxSol} setSol={onSolChange} />
   )
 }
 
@@ -39,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomDate)
 
-const SolDate = ({ rover, setSol, sol }) => {
+const SolDate = ({ sol, min, max, setSol }) => {
   return (
     <div className="field">
       <div className="field-label">
@@ -48,17 +57,23 @@ const SolDate = ({ rover, setSol, sol }) => {
       <div className="field-body">
         <input
           type="number"
-          max={rover.max_sol}
-          min={1}
+          min={min}
+          max={max}
           value={sol}
-          onChange={(e) => setSol(e.target.value)}
+          onKeyDown={(e) => isNumberKey(e)}
+          onChange={(e) => {
+            const value = e.target.value
+            if (!(value < min || value > max)) {
+              setSol(value)
+            }
+          }}
         />
       </div>
     </div>
   )
 }
 
-const EarthDate = ({ rover, setDate, date }) => {
+const EarthDate = ({ date, min, max, setDate }) => {
   return (
     <div className="field">
       <div className="field-label">
@@ -68,9 +83,14 @@ const EarthDate = ({ rover, setDate, date }) => {
         <input
           type="date"
           value={date}
-          min={rover.landing_date}
-          max={rover.max_date}
-          onChange={(e) => setDate(e.target.value)}
+          min={min}
+          max={max}
+          onChange={(e) => {
+            const value = e.target.value
+            if (!(value < min || value > max)) {
+              setDate(value)
+            }
+          }}
         />
       </div>
     </div>

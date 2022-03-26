@@ -22,7 +22,13 @@ const RoverFilters = ({
       <h3>Filters:</h3>
 
       <div className="fields">
-        <CustomDate type={dateType} rover={rover} />
+        <CustomDate
+          type={dateType}
+          minDate={rover.landing_date}
+          maxDate={rover.max_date}
+          minSol={0}
+          maxSol={rover.max_sol}
+        />
 
         <div className="field">
           <div className="field-label">
