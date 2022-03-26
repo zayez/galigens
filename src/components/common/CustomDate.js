@@ -6,22 +6,22 @@ import { EARTH_DAY } from "../../types/DateType"
 const CustomDate = ({
   rover,
   type,
-  earthDate,
-  sol,
+  txtEarthDate,
+  txtSol,
   onEarthDateChange,
   onSolChange,
 }) => {
   return type === EARTH_DAY ? (
-    <EarthDate rover={rover} setDate={onEarthDateChange} date={earthDate} />
+    <EarthDate rover={rover} setDate={onEarthDateChange} date={txtEarthDate} />
   ) : (
-    <SolDate rover={rover} setSol={onSolChange} sol={sol} />
+    <SolDate rover={rover} setSol={onSolChange} sol={txtSol} />
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    earthDate: state.filters.earthDate,
-    sol: state.filters.sol,
+    txtEarthDate: state.filters.txtEarthDate,
+    txtSol: state.filters.txtSol,
   }
 }
 

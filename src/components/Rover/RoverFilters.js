@@ -1,10 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
-import { setCamera, setDateType } from "../../actions/filtersActions"
+import {
+  applyFilters,
+  setCamera,
+  setDateType,
+} from "../../actions/filtersActions"
+import { fetchPhotos } from "../../actions/photosActions"
 import { EARTH_DAY, SOL_DAY } from "../../types/DateType"
 import CustomDate from "../common/CustomDate"
-
-import { fetchPhotos } from "../../actions/photosActions"
 
 const RoverFilters = ({
   rover,
@@ -75,6 +78,8 @@ const RoverFilters = ({
 
 const mapStateToProps = (state) => {
   return {
+    txtEarthDate: state.filters.txtEarthDate,
+    txtSol: state.filters.txtSol,
     dateType: state.filters.dateType,
     camera: state.filters.camera,
   }
@@ -91,6 +96,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     onSearchClick: async () => {
+      dispatch(applyFilters())
       dispatch(fetchPhotos())
     },
   }

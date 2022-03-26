@@ -1,8 +1,11 @@
+import { EARTH_DAY } from "../types/DateType"
+
 export const SET_EARTH_DATE = "SET_EARTH_DATE"
 export const SET_SOL = "SET_SOL"
 export const SET_DATE_TYPE = "SET_DATE_TYPE"
 export const SET_CAMERA = "SET_CAMERA"
-export const SET_INITIAL_FILTERS = "SET_INITIAL_FILTERS"
+export const SET_FILTERS = "SET_FILTERS"
+export const APPLY_FILTERS = "APPLY_FILTERS"
 
 export const setEarthDate = (date) => ({
   type: SET_EARTH_DATE,
@@ -24,7 +27,16 @@ export const setCamera = (name) => ({
   payload: name,
 })
 
-export const setInitialFilters = ({ earthDate, sol }) => ({
-  type: SET_INITIAL_FILTERS,
-  payload: { earthDate, sol },
+export const setFilters = ({
+  earthDate,
+  sol,
+  camera = "",
+  dateType = EARTH_DAY,
+}) => ({
+  type: SET_FILTERS,
+  payload: { earthDate, sol, camera, dateType },
+})
+
+export const applyFilters = () => ({
+  type: APPLY_FILTERS,
 })

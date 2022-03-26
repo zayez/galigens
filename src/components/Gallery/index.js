@@ -14,6 +14,7 @@ import GalleryList from "./GalleryList"
 import OverlayPhoto from "../Overlay/OverlayPhoto"
 
 const Gallery = ({
+  selectedRover,
   photos,
   earthDate,
   sol,
@@ -29,8 +30,7 @@ const Gallery = ({
     } else {
       if (sol !== "") getPhotos()
     }
-  }, [])
-  useEffect(() => {}, [photos])
+  }, [earthDate, sol, selectedRover])
 
   if (photos.length > 0) {
     return (
@@ -59,6 +59,7 @@ const mapStateToProps = (state) => {
     dateType: state.filters.dateType,
     photos: state.photos.photos,
     openedPhoto: state.photos.openedPhoto,
+    selectedRover: state.rovers.selectedRover,
   }
 }
 

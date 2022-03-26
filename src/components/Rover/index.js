@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { connect } from "react-redux"
 
 import { selectRover } from "../../actions/roversActions"
-import { setInitialFilters } from "../../actions/filtersActions"
+import { setFilters } from "../../actions/filtersActions"
 import RoverPage from "./RoverPage"
 
 const Rover = ({ selectedRover, setRover, initializeFilters }) => {
@@ -36,9 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     initializeFilters: (rover) => {
-      dispatch(
-        setInitialFilters({ earthDate: rover.max_date, sol: rover.max_sol })
-      )
+      dispatch(setFilters({ earthDate: rover.max_date, sol: rover.max_sol }))
     },
   }
 }
