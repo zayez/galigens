@@ -1,7 +1,9 @@
 import api from "../api"
 export const GET_PHOTOS = "GET_PHOTOS"
+export const GET_PHOTOS_SUCCESS = "GET_PHOTOS_SUCCESS"
 export const RESET_PHOTOS = "RESET_PHOTOS"
 export const GET_MORE_PHOTOS = "GET_MORE_PHOTOS"
+export const GET_MORE_PHOTOS_SUCCESS = "GET_MORE_PHOTOS_SUCCESS"
 export const OPEN_PHOTO = "OPEN_PHOTO"
 export const CLOSE_PHOTO = "CLOSE_PHOTO"
 
@@ -14,8 +16,12 @@ export const closePhoto = () => ({
   type: CLOSE_PHOTO,
 })
 
-const getPhotos = (photos) => ({
+const getPhotos = () => ({
   type: GET_PHOTOS,
+})
+
+const getPhotosSuccess = (photos) => ({
+  type: GET_PHOTOS_SUCCESS,
   payload: photos,
 })
 
@@ -23,12 +29,17 @@ export const resetPhotos = () => ({
   type: RESET_PHOTOS,
 })
 
-const getMorePhotos = (photos) => ({
+const getMorePhotos = () => ({
   type: GET_MORE_PHOTOS,
+})
+
+const getMorePhotosSuccess = (photos) => ({
+  type: GET_MORE_PHOTOS_SUCCESS,
   payload: photos,
 })
 
 export const fetchPhotos = () => async (dispatch, getState) => {
+  dispatch(getPhotos())
   const state = getState()
   const { selectedRover } = state.rovers
   const { earthDate, sol, camera, dateType } = state.filters
@@ -42,10 +53,11 @@ export const fetchPhotos = () => async (dispatch, getState) => {
     dateType,
   })
 
-  dispatch(getPhotos(photos))
+  dispatch(getPhotosSuccess(photos))
 }
 
 export const fetchMorePhotos = () => async (dispatch, getState) => {
+  dispatch(getMorePhotos())
   const state = getState()
   const { selectedRover } = state.rovers
   const { earthDate, sol, camera, dateType } = state.filters
@@ -60,5 +72,5 @@ export const fetchMorePhotos = () => async (dispatch, getState) => {
     page,
   })
 
-  dispatch(getMorePhotos(photos))
+  dispatch(getMorePhotosSuccess(photos))
 }

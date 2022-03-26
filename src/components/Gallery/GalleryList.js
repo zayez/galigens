@@ -2,8 +2,20 @@ import React from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import GalleryItem from "./GalleryItem"
 import "./gallery.sss"
+import Loader from "../Loader"
+import { SPINNER_TYPE } from "../../types/LoaderType"
 
-const GalleryList = ({ photos, getMorePhotos, onPhotoClick }) => {
+const GalleryList = ({
+  photos,
+  getMorePhotos,
+  onPhotoClick,
+  isLoadingMore,
+  hasMore,
+}) => {
+  const loadMore = <LoadMore getMorePhotos={getMorePhotos} />
+  const loader = <Loader type={SPINNER_TYPE} size="small" />
+  const component = hasMore ? (isLoadingMore ? loader : loadMore) : null
+
   return (
     <div className="gallery-wrapper">
       <TransitionGroup className="gallery-list" component="ul">
@@ -17,11 +29,17 @@ const GalleryList = ({ photos, getMorePhotos, onPhotoClick }) => {
           </CSSTransition>
         ))}
       </TransitionGroup>
-      <div className="row">
-        <button className="btn btn-alternate btn-full" onClick={getMorePhotos}>
-          Load more
-        </button>
-      </div>
+      {component}
+    </div>
+  )
+}
+
+const LoadMore = ({ getMorePhotos }) => {
+  return (
+    <div className="row">
+      <button className="btn btn-alternate btn-full" onClick={getMorePhotos}>
+        Load more
+      </button>
     </div>
   )
 }
