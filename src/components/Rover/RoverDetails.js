@@ -1,6 +1,8 @@
 import React from "react"
 
 const RoverDetails = ({ rover }) => {
+  const minDate = new Date(rover.landing_date)
+  const maxDate = new Date(rover.max_date)
   return (
     <div className="rover-description">
       <h3>Rover details:</h3>
@@ -9,11 +11,23 @@ const RoverDetails = ({ rover }) => {
           <tbody>
             <tr>
               <td>Landing:</td>
-              <td>{rover.landing_date}</td>
+              <td>
+                {minDate.toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                })}
+              </td>
             </tr>
             <tr>
               <td>Last day:</td>
-              <td>{rover.max_date}</td>
+              <td>
+                {maxDate.toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                })}
+              </td>
             </tr>
             <tr>
               <td>Last sol:</td>
