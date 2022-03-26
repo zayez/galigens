@@ -22,6 +22,8 @@ const getPhotos = async ({
   const params = camera ? `&camera=${camera}` : ""
   const photosUrl = `${basePhotosUrl}/photos?${dateParam}${params}&page=${page}`
 
+  console.log(photosUrl)
+
   const res = await fetch(photosUrl)
   const data = await res.json()
   return data.photos

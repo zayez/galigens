@@ -29,7 +29,8 @@ const getPhotos = async ({
     dateType === EARTH_DAY ? `earth_date=${earthDate}` : `sol=${sol}`
   const params = camera !== "" ? `&camera=${camera}` : ""
   const photosUrl = `${basePhotosUrl}/photos?${dateParam}${params}&page=${page}&api_key=${api_key}`
-  console.log(`url: ${photosUrl}`)
+
+  console.log(photosUrl)
 
   const res = await fetch(photosUrl)
   const data = await res.json()
