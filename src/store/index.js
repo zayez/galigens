@@ -7,15 +7,13 @@ import { composeWithDevTools } from "redux-devtools-extension"
 
 const persistedState = loadState()
 
-// raw store
-// const store = createStore(rootReducer, persistedState, applyMiddleware(thunk))
+const isDev = process.env.NODE_ENV === "development"
 
-// devtools store
-const store = createStore(
-  rootReducer,
-  persistedState,
-  composeWithDevTools(applyMiddleware(thunk))
-)
+const enhancer = isDev
+  ? composeWithDevTools(applyMiddleware(thunk))
+  : applyMiddleware(thunk)
+
+const store = createStore(rootReducer, persistedState, enhancer)
 
 store.subscribe(
   throttle(() => {
