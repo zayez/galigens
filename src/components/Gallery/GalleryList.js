@@ -20,11 +20,7 @@ const GalleryList = ({
     <div className="gallery-wrapper">
       <TransitionGroup className="gallery-list" component="ul">
         {photos.map((photo) => (
-          <CSSTransition
-            key={photo.id}
-            timeout={2500}
-            classNames="gallery-item"
-          >
+          <CSSTransition key={photo.id} timeout={500} classNames="gallery-item">
             <GalleryItem photo={photo} key={photo.id} onClick={onPhotoClick} />
           </CSSTransition>
         ))}
