@@ -20,7 +20,7 @@ const RoverItem = ({ rover }) => {
       <div className="card">
         <div className="card-content">
           <div className="card-title">
-            <h3>
+            <h3 className="rover-title">
               <Link to={`/rover/${rover.id}`}>{rover.name}</Link>
             </h3>
           </div>
