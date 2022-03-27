@@ -6,7 +6,7 @@ const photosData = require("./fixtures/rover-photos-data-local.json")
 
 const app = express()
 const port = 3000
-const API_TIME_DELAY = 500
+const API_TIME_DELAY = 100
 
 app.get("/", cors(), (req, res) => {
   res.send("Hello!")
