@@ -40,3 +40,7 @@ npm start
 [Spirit Rover mission](https://www.jpl.nasa.gov/missions/mars-exploration-rover-spirit-mer-spirit)
 
 [ Perseverance Rover mission](https://www.jpl.nasa.gov/missions/mars-2020-perseverance-rover)
+
+## Third-party resources
+
+[cssloaders (MIT)](https://github.com/vineethtrv/css-loader)
