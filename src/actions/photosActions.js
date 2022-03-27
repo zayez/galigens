@@ -1,3 +1,4 @@
+import { resolvePath } from "react-router-dom"
 import api from "../api"
 export const GET_PHOTOS = "GET_PHOTOS"
 export const GET_PHOTOS_SUCCESS = "GET_PHOTOS_SUCCESS"
@@ -53,6 +54,9 @@ export const fetchPhotos = () => async (dispatch, getState) => {
     dateType,
   })
 
+  const imagesLoader = photos.reduce(imageLoaderReducer, [])
+  await Promise.all(imagesLoader)
+
   dispatch(getPhotosSuccess(photos))
 }
 
@@ -72,5 +76,20 @@ export const fetchMorePhotos = () => async (dispatch, getState) => {
     page,
   })
 
+  const imagesLoader = photos.reduce(imageLoaderReducer, [])
+  await Promise.all(imagesLoader)
+
   dispatch(getMorePhotosSuccess(photos))
+}
+
+const imageLoaderReducer = (prev, cur) => {
+  let image
+  let p = new Promise((resolve, reject) => {
+    image = new Image()
+    image.src = cur.img_src
+    image.addEventListener("load", () => {
+      resolve(true)
+    })
+  })
+  return [...prev, p]
 }
