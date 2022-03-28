@@ -1,5 +1,5 @@
 import React from "react"
-import Menu from "../Menu"
+import Menu from "../Navbar/Menu"
 import "./footer.sss"
 
 const Footer = ({ orientation = "horizontal" }) => {
