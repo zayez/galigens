@@ -22,7 +22,7 @@ app.get("/rovers", cors(), async (req, res) => {
 
 app.get("/rovers/:roverName/photos", cors(), async (req, res) => {
   await new Promise((resolve) => setTimeout(resolve, API_TIME_DELAY))
-  const LIMIT = 5
+  const LIMIT = 10
   const rover = req.params.roverName
 
   const earthDate = req.query.earth_date
