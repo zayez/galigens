@@ -8,6 +8,12 @@ export const GET_MORE_PHOTOS_SUCCESS = "GET_MORE_PHOTOS_SUCCESS"
 export const OPEN_PHOTO = "OPEN_PHOTO"
 export const CLOSE_PHOTO = "CLOSE_PHOTO"
 
+/*
+  Controls how many images are loaded before dispaching the action
+  of getting photos. See fetchPhotos() to learn more.
+*/
+const MAX_IMAGES_SYNC_LOAD = 15
+
 export const openPhoto = (photo) => ({
   type: OPEN_PHOTO,
   payload: photo,
@@ -54,7 +60,9 @@ export const fetchPhotos = () => async (dispatch, getState) => {
     dateType,
   })
 
-  const imagesLoader = photos.reduce(imageLoaderReducer, [])
+  const imagesLoader = photos
+    .slice(0, MAX_IMAGES_SYNC_LOAD)
+    .reduce(imageLoaderReducer, [])
   await Promise.all(imagesLoader)
 
   dispatch(getPhotosSuccess(photos))
@@ -76,7 +84,9 @@ export const fetchMorePhotos = () => async (dispatch, getState) => {
     page,
   })
 
-  const imagesLoader = photos.reduce(imageLoaderReducer, [])
+  const imagesLoader = photos
+    .slice(0, MAX_IMAGES_SYNC_LOAD)
+    .reduce(imageLoaderReducer, [])
   await Promise.all(imagesLoader)
 
   dispatch(getMorePhotosSuccess(photos))
