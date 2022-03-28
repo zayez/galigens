@@ -2,8 +2,7 @@ import React from "react"
 import { getRoverImage } from "../../helpers/roverUtils"
 import Gallery from "../Gallery"
 import "./rover.sss"
-import "../../styles/components/forms.sss"
-import RoverFilters from "./RoverFilters"
+import RoverFilters from "./Filters"
 
 const RoverPage = ({ rover, earthDate }) => {
   if (rover) {

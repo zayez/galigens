@@ -50,11 +50,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(CustomDate)
 
 const SolDate = ({ sol, min, max, setSol }) => {
   return (
-    <div className="field">
-      <div className="field-label">
+    <div className="filter">
+      <div className="filter-label">
         <label>Sol:</label>
       </div>
-      <div className="field-body">
+      <div className="filter-body">
         <input
           type="number"
           min={min}
@@ -76,11 +76,11 @@ const SolDate = ({ sol, min, max, setSol }) => {
 
 const EarthDate = ({ date, min, max, setDate }) => {
   return (
-    <div className="field">
-      <div className="field-label">
-        <label>Earth date:</label>
+    <div className="filter">
+      <div className="filter-label">
+        <label>Date:</label>
       </div>
-      <div className="field-body">
+      <div className="filter-body">
         <input
           type="date"
           value={date}
