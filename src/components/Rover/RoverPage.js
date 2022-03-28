@@ -23,7 +23,7 @@ const RoverPage = ({ rover, earthDate }) => {
             <RoverFilters rover={rover} />
           </div>
           <div className="rover-gallery">
-            <h3>Rover gallery</h3>
+            <h3 className="sub-heading">Rover gallery</h3>
             <Gallery rover={rover} earthDate={earthDate} />
           </div>
         </div>
