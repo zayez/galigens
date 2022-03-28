@@ -35,3 +35,25 @@
   & img
     height: 100%
     object-fit: cover
+
+/* Transition animations */
+.rover-item-enter
+  opacity: 0
+
+.rover-item-enter-active
+  opacity: 1
+  transition: opacity var(--rover-item-transition-time)
+
+.rover-item-appear
+  opacity: 0
+
+.rover-item-appear-active
+  opacity: 1
+  transition: opacity var(--rover-item-transition-time)
+
+.rover-item-exit
+  opacity: 1
+
+.rover-item-exit-active
+  opacity: 0
+  transition: opacity var(--rover-item-transition-time)
