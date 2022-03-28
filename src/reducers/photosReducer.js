@@ -30,12 +30,14 @@ const photosReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        isLoadingMore: false,
       }
     case GET_PHOTOS_SUCCESS:
       return {
         ...state,
         photos: [...action.payload],
         isLoading: false,
+        isLoadingMore: false,
         hasMore: action.payload
           ? action.payload.length > 1
             ? true
