@@ -14,7 +14,7 @@ import "./app.sss"
 const AnimatedApp = () => {
   const location = useLocation()
   return (
-    <TransitionGroup>
+    <TransitionGroup appear={true} exit={false}>
       <CSSTransition
         key={location.pathname}
         classNames="animated-app"

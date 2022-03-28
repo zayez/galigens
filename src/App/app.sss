@@ -5,9 +5,17 @@
   opacity: 1
   transition: opacity var(--base-transition-time)
 
+.animated-app-appear
+  opacity: 0
+
+.animated-app-appear-active
+  opacity: 1
+  border: 1px solid white
+  transition: opacity var(--base-transition-time)
+
 .animated-app-exit
   opacity: 1
-  display: none
+  /* display: none */
 
 .animated-app-exit-active
   opacity: 0
