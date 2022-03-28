@@ -12,7 +12,7 @@ nix-shell
 
 Create a `credentials.json` from the available template (`credentials-template.json`), then insert your _API key_ from the [NASA Open APIs](https://api.nasa.gov/) to it.
 
-You're set and can start developing:
+After this you're set and can start developing:
 
 ```bash
 npm start
