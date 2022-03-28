@@ -18,7 +18,13 @@ const GalleryList = ({
 
   return (
     <div className="gallery-wrapper">
-      <TransitionGroup className="gallery-list" component="ul">
+      <TransitionGroup
+        className="gallery-list"
+        component="ul"
+        appear={true}
+        enter={true}
+        exit={false}
+      >
         {photos.map((photo) => (
           <CSSTransition key={photo.id} timeout={500} classNames="gallery-item">
             <GalleryItem photo={photo} key={photo.id} onClick={onPhotoClick} />
