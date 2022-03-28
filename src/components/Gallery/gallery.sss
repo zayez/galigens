@@ -1,28 +1,23 @@
 .gallery-wrapper
   max-width: 900px
-  margin: 0 auto
 
 .gallery-list
-  display: flex
-  flex-wrap: wrap
-  justify-content: flex-start
-  align-items: center
-  margin-top: 1rem
+  margin-bottom: 2rem
+
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+  gap: 1rem 1rem
 
 
 .gallery-item
-  display: flex
-  flex-flow: column
   z-index: 4
 
 .gallery-item >
 a > img
-  max-width: 250px
-  padding: .5em
   border: 1px solid transparent
 
   &:hover
-    border: 1px solid var(--header-bg)
+    border: 1px solid var(--accent-color)
 
 /* Transition animations */
 .gallery-item-enter
