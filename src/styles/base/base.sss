@@ -4,12 +4,17 @@
   margin: 0
 
 html
-  font-size: responsive 12px 18px/* min-size, max-size */
-  font-range: 576px 1400px /* viewport widths between which font-size is fluid */
+  font-size: responsive 0.75em 1.125em/* min-size, max-size */
+  font-range: 36em 87.5em /* viewport widths between which font-size is fluid */
+  line-height: responsive 0.75em 1.125em
+  line-height-range: 36em 87.5em
 
 body
   color: var(--text-color)
   background: var(--body-bg)
+
+h1, h2, h3, h4, h5, h6
+  line-height: 1.4em
 
 a
   text-decoration: none
@@ -20,7 +25,6 @@ a
 
 img
   max-width: 100%
-
 
 input[type="text"], input[type="date"], input[type="number"], select
   display: inline-block
