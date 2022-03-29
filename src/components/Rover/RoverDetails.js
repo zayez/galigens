@@ -8,7 +8,7 @@ const RoverDetails = ({ rover }) => {
       <table className="rover-description-table">
         <tbody>
           <tr>
-            <td>Landing date:</td>
+            <td>Landing date</td>
             <td>
               {minDate.toLocaleDateString(undefined, {
                 year: "numeric",
@@ -18,7 +18,7 @@ const RoverDetails = ({ rover }) => {
             </td>
           </tr>
           <tr>
-            <td>Last report:</td>
+            <td>Last report</td>
             <td>
               {maxDate.toLocaleDateString(undefined, {
                 year: "numeric",
@@ -28,15 +28,15 @@ const RoverDetails = ({ rover }) => {
             </td>
           </tr>
           <tr>
-            <td>Mission clock:</td>
+            <td>Mission clock</td>
             <td>{rover.max_sol} sols</td>
           </tr>
           <tr>
-            <td>Raw photos:</td>
+            <td>Raw photos</td>
             <td>{rover.total_photos}</td>
           </tr>
           <tr>
-            <td>Status:</td>
+            <td>Status</td>
             <td>{rover.status}</td>
           </tr>
         </tbody>
