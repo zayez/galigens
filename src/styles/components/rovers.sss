@@ -17,6 +17,14 @@
   font-size: 1.5em
   margin-bottom: 1rem
 
+.rover-description-table
+  border-spacing: 0 .75em
+  & > tbody tr
+    & > td:first-child
+      text-align: right
+      font-weight: bold
+      padding-right: 0.45em
+
 .card
   border: 3px solid var(--gray)
   display: flex
@@ -29,12 +37,21 @@
   &:hover
     border-color: var(--accent-color)
 
+.card-title
+  text-align: center
 
 .card-content
   padding: 1rem 1rem
+  display: flex
+  flex-flow: column
+  justify-content: center
 
   @media (--sm-bp)
     flex-basis: 60%
+
+.card-body
+  display: flex
+  justify-content: center
 
 .card-image
   & img
