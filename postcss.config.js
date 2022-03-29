@@ -7,6 +7,7 @@ module.exports = {
         extensions: [".sss"],
       },
     ],
+    "postcss-responsive-type",
     [
       "postcss-preset-env",
       {
