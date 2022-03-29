@@ -1,4 +1,4 @@
-# Galigens - Mars photo explorer
+# Galigens - Mars surface explorer
 
 A webapp to explore the Martian surface using real-life photos from Mars captured by NASA's rovers operating on the red planet.
 
