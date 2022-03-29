@@ -7,8 +7,8 @@ import Header from "../components/Header"
 import Rover from "../components/Rover"
 import Rovers from "../components/Rovers"
 import About from "../pages/About"
-import ErrorPage from "../pages/ErrorPage"
-import Home from "../pages/Home"
+// import ErrorPage from "../pages/ErrorPage"
+// import Home from "../pages/Home"
 import "./app.sss"
 
 const AnimatedApp = () => {
@@ -21,8 +21,8 @@ const AnimatedApp = () => {
         timeout={600}
       >
         <Routes location={location}>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/rovers" element={<Rovers />} />
+          {/* <Route path="/" exact element={<Home />} /> */}
+          <Route path="/" element={<Rovers />} />
           <Route path="/about" element={<About />} />
           <Route path="/rover/:id" element={<Rover />} />
         </Routes>
