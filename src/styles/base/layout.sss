@@ -1,7 +1,25 @@
 .container
   margin: 0 auto
-  max-width: 900px
   padding: 0em 1rem
+
+  @media (--sm-bp)
+    max-width: var(--container-sm-max-width)
+
+  @media (--md-bp)
+    max-width: var(--container-md-max-width)
+
+  @media (--lg-bp)
+    max-width: var(--container-lg-max-width)
+
+  @media (--xl-bp)
+    max-width: var(--container-xl-max-width)
+
+  @media (--xxl-bp)
+    max-width: var(--container-xxl-max-width)
+
+/* @media (--sm-bp)
+  .container
+    max-width: 500px */
 
 .content-main
   padding-top: 2rem

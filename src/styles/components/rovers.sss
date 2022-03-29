@@ -1,7 +1,11 @@
 .rovers-list
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
   gap: 2rem 2rem
+
+  @media (--xl-bp)
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr))
+    gap: 4rem 4rem
 
 .rover-item
   cursor: pointer
@@ -25,16 +29,20 @@
   &:hover
     border-color: var(--accent-color)
 
+
 .card-content
   padding: 1rem 1rem
-  flex-basis: 60%
+
+  @media (--sm-bp)
+    flex-basis: 60%
 
 .card-image
-  flex-basis: 40%
-
   & img
     height: 100%
     object-fit: cover
+
+  @media (--sm-bp)
+    flex-basis: 40%
 
 /* Transition animations */
 .rover-item-enter

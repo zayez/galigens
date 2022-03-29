@@ -1,7 +1,6 @@
 import React from "react"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import RoverItem from "./RoverItem"
-import "./rovers.sss"
 
 const RoverList = ({ rovers }) => {
   return (
