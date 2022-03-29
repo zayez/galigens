@@ -1,6 +1,20 @@
-# Galigens
+# Galigens - Mars photo explorer
 
-This project aims to use the NASA's API to display pictures of Mars that were taken from the rovers on the red planet.
+A webapp to explore the Martian surface using real-life photos from Mars captured by NASA's rovers operating on the red planet.
+
+Available rovers:
+
+- Spirit
+- Oportunity
+- Curiosity (active)
+- Perseverence (active)
+
+## Features
+
+- Display a list of available rovers with their mission details.
+- Display a gallery of photos by selected rover.
+- Allow to filter the photo gallery by date (or sol) and camera.
+- Allow to zoom photos in the rover's photo gallery.
 
 ## Development
 
@@ -18,17 +32,11 @@ After this you're set and can start developing:
 npm start
 ```
 
-## Requirements
-
-- Display a list of the rovers available.
-- Allow the selection of a rover.
-- Display a list pictures taken from a selected rover.
-- Possibility of date choices.
-
 ## Scope
 
-- Mobile / Web only.
-- No back-end; should only persist data in the browser.
+- Minimalistic.
+- Web only.
+- No back. Only persist data in the browser.
 - No CSS Framework.
 
 ## References
