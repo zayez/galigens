@@ -36,7 +36,7 @@ npm start
 
 - Minimalistic.
 - Web only.
-- No back. Only persist data in the browser.
+- No back-end. Only persist data in the browser.
 - No CSS Framework.
 
 ## References
