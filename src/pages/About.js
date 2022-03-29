@@ -5,8 +5,8 @@ const About = ({}) => {
     <div className="about container content-main">
       <h2 className="heading">About</h2>
       <p className="about-text">
-        A webapp to explore the Martian surface using real-life photos from Mars
-        captured by NASA's rovers operating on the Red Planet.
+        A webapp to explore the Martian surface using real-life photos from
+        Mars; captured by NASA's rovers operating on the Red Planet.
       </p>
       <h3 className="sub-heading">Available rovers</h3>
       <ul className="about-list">
