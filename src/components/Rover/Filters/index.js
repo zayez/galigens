@@ -21,18 +21,19 @@ const RoverFilters = ({
   return (
     <div className="rover-filters">
       <form onSubmit={onSearchClick}>
-        <HeaderFilters
-          rover={rover}
-          camera={camera}
-          dateType={dateType}
-          onDateTypeChange={onDateTypeChange}
-          onCameraChange={onCameraChange}
-        />
-        <MainFilter rover={rover} dateType={dateType} />
-        <div className="submit-container">
-          <button className="btn btn-major" type="submit">
-            Search
-          </button>
+        <div className="panel">
+          <HeaderFilters
+            rover={rover}
+            camera={camera}
+            dateType={dateType}
+            onDateTypeChange={onDateTypeChange}
+            onCameraChange={onCameraChange}
+          />
+          <div className="submit-container">
+            <button className="btn btn-major" type="submit">
+              Search
+            </button>
+          </div>
         </div>
       </form>
     </div>

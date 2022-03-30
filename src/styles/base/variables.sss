@@ -9,11 +9,16 @@
   /* BASE COLORS */
   --black: hsl(5, 5%, 5%)
   --white: hsl(0, 0%, 100%)
-  --white-light: hsl(0, 0%, 92%)
+  --white-light: hsl(0, 0%, 95%)
 
-  --gray-light: hsl(50, 10%, 80%)
-  --gray: hsl(50, 10%, 50%)
-  --gray-dark: hsl(50, 10%, 45%)
+  --gray: hsl(0, 0%, 65%)
+  --gray-dark: hsl(50, 0%, 60%)
+  --gray-darker: hsl(50, 0%, 55%)
+  --gray-darkest: hsl(50, 0%, 50%)
+
+  --gray-light: hsl(50, 0%, 80%)
+  --gray-lighter: hsl(50, 0%, 92%)
+  --gray-lightest: hsl(360, 10%, 98%)
 
   --red: hsl(9, 81.6%, 38.4%) /* Iron oxide base color */
   --red-dark: hsl(9, 81.6%, 28.4%)
@@ -39,7 +44,7 @@
   --accent-color: var(--blu)
 
   /* MAIN COMPONENTS */
-  --body-bg: hsl(0, 0%, 85%)
+  --body-bg: var(--gray-lightest)
   --text-color: var(--black)
   --header-bg: var(--red-darker)
   --footer-bg: hsl(0, 5%, 10%)
@@ -51,6 +56,9 @@
   --btn-major-hover-color: var(--blu-darkest)
   --btn-alternate-color: var(--gray)
   --btn-alternate-hover-color: var(--gray-dark)
+
+  /* INPUTS */
+  --input-border-color: var(--gray-lighter)
 
     /* CONTAINER */
   --container-sm-max-width: 540px

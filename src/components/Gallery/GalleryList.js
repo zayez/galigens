@@ -39,7 +39,10 @@ const GalleryList = ({
 const LoadMore = ({ getMorePhotos }) => {
   return (
     <div className="row">
-      <button className="btn btn-alternate btn-full" onClick={getMorePhotos}>
+      <button
+        className="btn btn-sm btn-alternate btn-full"
+        onClick={getMorePhotos}
+      >
         Load more
       </button>
     </div>

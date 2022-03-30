@@ -11,7 +11,7 @@ const RoverPage = ({ rover, earthDate }) => {
         <div className="container content-main">
           <div className="rover-heading">
             <div className="rover-name">
-              <h2>{rover.name} rover</h2>
+              <h2>Selected rover: {rover.name}</h2>
             </div>
             <div className="rover-avatar">
               <div className="rover-image">
@@ -23,7 +23,7 @@ const RoverPage = ({ rover, earthDate }) => {
             <RoverFilters rover={rover} />
           </div>
           <div className="rover-gallery">
-            <h3 className="sub-heading">Rover gallery</h3>
+            <h3 className="sub-heading">Gallery</h3>
             <Gallery rover={rover} earthDate={earthDate} />
           </div>
         </div>

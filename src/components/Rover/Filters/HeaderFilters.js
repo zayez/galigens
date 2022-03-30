@@ -1,5 +1,6 @@
 import React from "react"
 import { EARTH_DAY, SOL_DAY } from "../../../types/DateType"
+import CustomDate from "../../common/CustomDate"
 
 const HeaderFilters = ({
   rover,
@@ -10,6 +11,14 @@ const HeaderFilters = ({
 }) => {
   return (
     <div className="header-filters">
+      <CustomDate
+        type={dateType}
+        minDate={rover.landing_date}
+        maxDate={rover.max_date}
+        minSol={0}
+        maxSol={rover.max_sol}
+      />
+
       <div className="filter">
         <div className="filter-label">
           <label>Date type:</label>
