@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      title: "Galigens - Mars surface explorer",
+      title: "Galigens - Mars photos explorer",
       template: "./src/index.html",
       filename: "index.html",
       inject: "body",
