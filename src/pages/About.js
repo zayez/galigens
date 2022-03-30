@@ -11,7 +11,6 @@ const About = ({}) => {
         is a webapp to explore the Martian surface using real-life photos from
         Mars; captured by NASA's rovers operating on the Red Planet.
       </p>
-
       <h2 className="sub-heading">Available rovers</h2>
       <ul className="about-list">
         <li>Spirit</li>
@@ -26,6 +25,7 @@ const About = ({}) => {
         <li>Allow to filter the photo gallery by date (or sol) and camera.</li>
         <li>Allow to zoom photos in the rover's photo gallery.</li>
       </ul>
+      <hr />
       <h2 className="sub-heading">License</h2>
       <p>
         <em>Galigens</em> is open-source and is distributed under the terms of
