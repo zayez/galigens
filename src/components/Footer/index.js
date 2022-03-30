@@ -7,7 +7,8 @@ const Footer = ({ orientation = "horizontal" }) => {
   return (
     <div className="footer">
       <div className="container">
-        <Menu orientation="vertical" />
+        {/* <Menu orientation="vertical" /> */}
+        <p>Copyright © 2022</p>
       </div>
     </div>
   )
