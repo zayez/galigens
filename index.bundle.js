@@ -1777,28 +1777,23 @@ var getRoverImage = function getRoverImage(name) {
 "use strict";
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7294);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3935);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(745);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8216);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2825);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(424);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_App__WEBPACK_IMPORTED_MODULE_3__, _store__WEBPACK_IMPORTED_MODULE_4__]);
 ([_App__WEBPACK_IMPORTED_MODULE_3__, _store__WEBPACK_IMPORTED_MODULE_4__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
- // import { createRoot } from "react-dom/client"
 
 
 
 
 
 
-var container = document.querySelector("#root"); // const root = createRoot(container)
-
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__/* .Provider */ .zt, {
+var container = document.querySelector("#root");
+var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__/* .createRoot */ .s)(container);
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__/* .Provider */ .zt, {
   store: _store__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null)), container); // root.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>
-// )
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null)));
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
 
@@ -2137,8 +2132,9 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7779);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3894);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5785);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7779);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3894);
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3280);
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4004);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3493);
@@ -2152,10 +2148,18 @@ _reducers__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? 
 
 
 
+
 var persistedState = (0,_storage__WEBPACK_IMPORTED_MODULE_3__/* .loadState */ .j)();
+
+if (persistedState) {
+  if (persistedState.rovers) {
+    persistedState.rovers.rovers = (0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(persistedState.rovers.rovers);
+  }
+}
+
 var isDev = "production" === "development";
-var enhancer = isDev ? (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__/* .composeWithDevTools */ .Uo)((0,redux__WEBPACK_IMPORTED_MODULE_4__/* .applyMiddleware */ .md)(redux_thunk__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)) : (0,redux__WEBPACK_IMPORTED_MODULE_4__/* .applyMiddleware */ .md)(redux_thunk__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
-var store = (0,redux__WEBPACK_IMPORTED_MODULE_4__/* .createStore */ .MT)(_reducers__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z, persistedState, enhancer);
+var enhancer = isDev ? (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__/* .composeWithDevTools */ .Uo)((0,redux__WEBPACK_IMPORTED_MODULE_5__/* .applyMiddleware */ .md)(redux_thunk__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)) : (0,redux__WEBPACK_IMPORTED_MODULE_5__/* .applyMiddleware */ .md)(redux_thunk__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
+var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__/* .createStore */ .MT)(_reducers__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z, persistedState, enhancer);
 store.subscribe(lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default()(function () {
   // logState(store.getState())
   (0,_storage__WEBPACK_IMPORTED_MODULE_3__/* .saveState */ .z)(store.getState());
@@ -4205,6 +4209,22 @@ exports.findDOMNode=function(a){if(null==a)return null;if(1===a.nodeType)return 
 exports.hydrateRoot=function(a,b,c){if(!dl(a))throw Error(p(405));var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=al;null!==c&&void 0!==c&&(!0===c.unstable_strictMode&&(e=!0),void 0!==c.identifierPrefix&&(f=c.identifierPrefix),void 0!==c.onRecoverableError&&(g=c.onRecoverableError));b=Vk(b,null,a,1,null!=c?c:null,e,!1,f,g);a[pf]=b.current;nf(a);if(d)for(a=0;a<d.length;a++)c=d[a],e=c._getVersion,e=e(c._source),null==b.mutableSourceEagerHydrationData?b.mutableSourceEagerHydrationData=[c,e]:b.mutableSourceEagerHydrationData.push(c,
 e);return new cl(b)};exports.render=function(a,b,c){if(!el(b))throw Error(p(200));return hl(null,a,b,!1,c)};exports.unmountComponentAtNode=function(a){if(!el(a))throw Error(p(40));return a._reactRootContainer?(Hk(function(){hl(null,null,a,!1,function(){a._reactRootContainer=null;a[pf]=null})}),!0):!1};exports.unstable_batchedUpdates=Gk;
 exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!el(c))throw Error(p(200));if(null==a||void 0===a._reactInternals)throw Error(p(38));return hl(a,b,c,!1,d)};exports.version="18.0.0-fc46dba67-20220329";
+
+
+/***/ }),
+
+/***/ 745:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var m = __webpack_require__(3935);
+if (true) {
+  exports.s = m.createRoot;
+  __webpack_unused_export__ = m.hydrateRoot;
+} else { var i; }
 
 
 /***/ }),
