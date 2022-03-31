@@ -6,6 +6,13 @@ import throttle from "lodash/throttle"
 import { composeWithDevTools } from "redux-devtools-extension"
 
 const persistedState = loadState()
+if (persistedState) {
+  if (persistedState.rovers) {
+    persistedState.rovers.rovers = persistedState.rovers.rovers
+      ? [...persistedState.rovers.rovers]
+      : []
+  }
+}
 
 const isDev = process.env.NODE_ENV === "development"
 

@@ -23,7 +23,7 @@ const roversReducer = (state = initialState, action) => {
     case GET_ROVERS_SUCCESS:
       return {
         ...state,
-        rovers: action.payload,
+        rovers: action.payload ? action.payload : [],
         isLoading: false,
       }
 
