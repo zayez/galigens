@@ -6,7 +6,6 @@ import { EARTH_DAY } from "../types/DateType"
 const getRovers = async () => {
   try {
     const url = `${baseUrl}/rovers?api_key=${api_key}`
-    console.log(`[rovers] url: ${url}`)
 
     const res = await fetch(url)
     const data = await res.json()
@@ -29,8 +28,6 @@ const getPhotos = async ({
     dateType === EARTH_DAY ? `earth_date=${earthDate}` : `sol=${sol}`
   const params = camera !== "" ? `&camera=${camera}` : ""
   const photosUrl = `${basePhotosUrl}/photos?${dateParam}${params}&page=${page}&api_key=${api_key}`
-
-  console.log(photosUrl)
 
   const res = await fetch(photosUrl)
   const data = await res.json()
