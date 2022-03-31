@@ -38,29 +38,30 @@ var getRovers = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             url = "".concat(baseUrl, "/rovers?api_key=").concat(api_key);
-            _context.next = 4;
+            console.log("[rovers] url: ".concat(url));
+            _context.next = 5;
             return fetch(url);
 
-          case 4:
+          case 5:
             res = _context.sent;
-            _context.next = 7;
+            _context.next = 8;
             return res.json();
 
-          case 7:
+          case 8:
             data = _context.sent;
             return _context.abrupt("return", data.rovers);
 
-          case 11:
-            _context.prev = 11;
+          case 12:
+            _context.prev = 12;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 14:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 11]]);
+    }, _callee, null, [[0, 12]]);
   }));
 
   return function getRovers() {
@@ -81,19 +82,20 @@ var getPhotos = /*#__PURE__*/function () {
             dateParam = dateType === DateType/* EARTH_DAY */.m ? "earth_date=".concat(earthDate) : "sol=".concat(sol);
             params = camera !== "" ? "&camera=".concat(camera) : "";
             photosUrl = "".concat(basePhotosUrl, "/photos?").concat(dateParam).concat(params, "&page=").concat(page, "&api_key=").concat(api_key);
-            _context2.next = 7;
+            console.log(photosUrl);
+            _context2.next = 8;
             return fetch(photosUrl);
 
-          case 7:
+          case 8:
             res = _context2.sent;
-            _context2.next = 10;
+            _context2.next = 11;
             return res.json();
 
-          case 10:
+          case 11:
             data = _context2.sent;
             return _context2.abrupt("return", data.photos);
 
-          case 12:
+          case 13:
           case "end":
             return _context2.stop();
         }

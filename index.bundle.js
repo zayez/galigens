@@ -2102,7 +2102,7 @@ var roversReducer = function roversReducer() {
 
     case _actions_roversActions__WEBPACK_IMPORTED_MODULE_1__/* .GET_ROVERS_SUCCESS */ .hR:
       return _objectSpread(_objectSpread({}, state), {}, {
-        rovers: action.payload,
+        rovers: action.payload ? action.payload : [],
         isLoading: false
       });
 
@@ -2153,7 +2153,7 @@ var persistedState = (0,_storage__WEBPACK_IMPORTED_MODULE_3__/* .loadState */ .j
 
 if (persistedState) {
   if (persistedState.rovers) {
-    persistedState.rovers.rovers = (0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(persistedState.rovers.rovers);
+    persistedState.rovers.rovers = persistedState.rovers.rovers ? (0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(persistedState.rovers.rovers) : [];
   }
 }
 
