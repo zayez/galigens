@@ -23,5 +23,8 @@ export const fetchRovers = () => async (dispatch, getState) => {
   dispatch(getRovers())
   dispatch(setFilters({}))
   const rawRovers = await api.getRovers()
-  dispatch(getRoversSuccess(rawRovers))
+  const rovers = rawRovers.sort(
+    (a, b) => b.landingDate.getTime() - a.landingDate.getTime()
+  )
+  dispatch(getRoversSuccess(rovers))
 }

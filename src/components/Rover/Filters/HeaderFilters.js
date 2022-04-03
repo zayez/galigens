@@ -9,14 +9,17 @@ const HeaderFilters = ({
   onDateTypeChange,
   onCameraChange,
 }) => {
+  const minDate = new Date(rover.landingDate).toISOString().split("T")[0]
+  const maxDate = new Date(rover.maxDate).toISOString().split("T")[0]
+
   return (
     <div className="header-filters">
       <CustomDate
         type={dateType}
-        minDate={rover.landing_date}
-        maxDate={rover.max_date}
+        minDate={minDate}
+        maxDate={maxDate}
         minSol={0}
-        maxSol={rover.max_sol}
+        maxSol={rover.maxSol}
       />
 
       <div className="filter">
@@ -52,7 +55,7 @@ const HeaderFilters = ({
             </option>
             {rover.cameras.map((camera) => (
               <option value={camera.name} key={camera.id}>
-                {`${camera.full_name}`}{" "}
+                {`${camera.fullname}`}{" "}
               </option>
             ))}
           </select>

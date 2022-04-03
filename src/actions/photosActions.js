@@ -96,7 +96,7 @@ const imageLoaderReducer = (prev, cur) => {
   let image
   let p = new Promise((resolve, reject) => {
     image = new Image()
-    image.src = cur.img_src
+    image.src = cur.imgSrc
     image.addEventListener("load", () => {
       resolve(true)
     })

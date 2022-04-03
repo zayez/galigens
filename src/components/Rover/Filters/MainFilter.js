@@ -6,10 +6,10 @@ const MainFilter = ({ rover, dateType }) => {
     <div className="main-filter">
       <CustomDate
         type={dateType}
-        minDate={rover.landing_date}
-        maxDate={rover.max_date}
+        minDate={rover.landingDate}
+        maxDate={rover.maxDate}
         minSol={0}
-        maxSol={rover.max_sol}
+        maxSol={rover.maxSol}
       />
     </div>
   )

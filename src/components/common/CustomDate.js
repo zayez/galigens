@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import { setEarthDate, setSol } from "../../actions/filtersActions"
-import { isValidNumericKey } from "../../helpers/keyboardUtils"
+import { isValidNumericKey } from "../../utils/keyboardUtils"
 import { EARTH_DAY } from "../../types/DateType"
+import { formatDate } from "../../utils/dateUtils"
 
 const CustomDate = ({
   minDate,
@@ -75,6 +76,8 @@ const SolDate = ({ sol, min, max, setSol }) => {
 }
 
 const EarthDate = ({ date, min, max, setDate }) => {
+  const dateSanitized = formatDate(new Date(date))
+
   return (
     <div className="filter">
       <div className="filter-label">
@@ -83,7 +86,7 @@ const EarthDate = ({ date, min, max, setDate }) => {
       <div className="filter-body">
         <input
           type="date"
-          value={date}
+          value={dateSanitized}
           min={min}
           max={max}
           onChange={(e) => {

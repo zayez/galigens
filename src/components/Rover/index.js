@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     initializeFilters: (rover) => {
-      dispatch(setFilters({ earthDate: rover.max_date, sol: rover.max_sol }))
+      dispatch(setFilters({ earthDate: rover.maxDate, sol: rover.maxSol }))
     },
   }
 }

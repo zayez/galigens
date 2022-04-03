@@ -1,39 +1,26 @@
 import React from "react"
+import { toLocaleDate } from "../../utils/dateUtils"
 
 const RoverDetails = ({ rover }) => {
-  const minDate = new Date(rover.landing_date)
-  const maxDate = new Date(rover.max_date)
   return (
     <div className="rover-description">
       <table className="rover-description-table">
         <tbody>
           <tr>
             <td>Landing date</td>
-            <td>
-              {minDate.toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              })}
-            </td>
+            <td>{toLocaleDate(rover.landingDate)}</td>
           </tr>
           <tr>
             <td>Last report</td>
-            <td>
-              {maxDate.toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              })}
-            </td>
+            <td>{toLocaleDate(rover.maxDate)}</td>
           </tr>
           <tr>
             <td>Mission clock</td>
-            <td>{rover.max_sol} sols</td>
+            <td>{rover.maxSol} sols</td>
           </tr>
           <tr>
             <td>Raw photos</td>
-            <td>{rover.total_photos}</td>
+            <td>{rover.totalPhotos}</td>
           </tr>
           <tr>
             <td>Status</td>
