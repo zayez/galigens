@@ -1,5 +1,66 @@
 "use strict";
-(self["webpackChunkgaligens"] = self["webpackChunkgaligens"] || []).push([[901],{
+(self["webpackChunkgaligens"] = self["webpackChunkgaligens"] || []).push([[901,616],{
+
+/***/ 3616:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "mapPhoto": () => (/* binding */ mapPhoto),
+/* harmony export */   "mapRover": () => (/* binding */ mapRover)
+/* harmony export */ });
+var mapRover = function mapRover(rover) {
+  if (!rover) return;
+  var newRover = {
+    id: rover.id,
+    name: rover.name,
+    landingDate: new Date(rover.landing_date),
+    launchDate: new Date(rover.launch_date),
+    status: rover.status,
+    maxSol: rover.max_sol,
+    maxDate: new Date(rover.max_date),
+    totalPhotos: rover.total_photos,
+    cameras: rover.cameras ? rover.cameras.map(mapCamera) : []
+  };
+  return newRover;
+};
+var mapPhoto = function mapPhoto(photo) {
+  if (!photo) return;
+  var newPhoto = {
+    id: photo.id,
+    sol: photo.sol,
+    camera: mapCamera(photo.camera),
+    imgSrc: photo.img_src,
+    earthDate: new Date(photo.earth_date),
+    rover: mapRoverPhoto(photo.rover)
+  };
+  return newPhoto;
+};
+
+var mapCamera = function mapCamera(camera) {
+  if (!camera) return;
+  var newCamera = {
+    id: camera.id,
+    name: camera.name,
+    roverId: camera.rover_id,
+    fullname: camera.full_name
+  };
+  return newCamera;
+};
+
+var mapRoverPhoto = function mapRoverPhoto(rover) {
+  if (!rover) return;
+  var newRover = {
+    id: rover.id,
+    name: rover.name,
+    landingDate: new Date(rover.landing_date),
+    launchDate: new Date(rover.launch_date),
+    status: rover.status
+  };
+  return newRover;
+};
+
+/***/ }),
 
 /***/ 1901:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -21,6 +82,10 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 const credentials_namespaceObject = JSON.parse('{"c":"iTt4t9tWvE9TMIQcMwFaCYnzA8gMJCp3caeHsZPj"}');
 // EXTERNAL MODULE: ./src/types/DateType.js
 var DateType = __webpack_require__(1984);
+// EXTERNAL MODULE: ./src/utils/dateUtils.js
+var dateUtils = __webpack_require__(2845);
+// EXTERNAL MODULE: ./src/api/mappings.js
+var mappings = __webpack_require__(3616);
 ;// CONCATENATED MODULE: ./src/api/realAPI.js
 
 
@@ -29,9 +94,11 @@ var baseUrl = "https://api.nasa.gov/mars-photos/api/v1";
 var api_key = credentials_namespaceObject.c;
 
 
+
+
 var getRovers = /*#__PURE__*/function () {
   var _ref = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee() {
-    var url, res, data;
+    var url, res, data, rawRovers, newRovers;
     return regenerator_default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -48,19 +115,21 @@ var getRovers = /*#__PURE__*/function () {
 
           case 7:
             data = _context.sent;
-            return _context.abrupt("return", data.rovers);
+            rawRovers = data.rovers;
+            newRovers = rawRovers.map(mappings.mapRover);
+            return _context.abrupt("return", newRovers);
 
-          case 11:
-            _context.prev = 11;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 14:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 11]]);
+    }, _callee, null, [[0, 13]]);
   }));
 
   return function getRovers() {
@@ -70,30 +139,33 @@ var getRovers = /*#__PURE__*/function () {
 
 var getPhotos = /*#__PURE__*/function () {
   var _ref3 = (0,asyncToGenerator/* default */.Z)( /*#__PURE__*/regenerator_default().mark(function _callee2(_ref2) {
-    var roverName, earthDate, sol, camera, _ref2$page, page, _ref2$dateType, dateType, basePhotosUrl, dateParam, params, photosUrl, res, data;
+    var roverName, earthDate, sol, camera, _ref2$page, page, _ref2$dateType, dateType, date, basePhotosUrl, dateParam, params, photosUrl, res, data, rawPhotos, newPhotos;
 
     return regenerator_default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             roverName = _ref2.roverName, earthDate = _ref2.earthDate, sol = _ref2.sol, camera = _ref2.camera, _ref2$page = _ref2.page, page = _ref2$page === void 0 ? 1 : _ref2$page, _ref2$dateType = _ref2.dateType, dateType = _ref2$dateType === void 0 ? DateType/* EARTH_DAY */.m : _ref2$dateType;
+            date = (0,dateUtils/* formatDate */.p)(earthDate);
             basePhotosUrl = "".concat(baseUrl, "/rovers/").concat(roverName);
-            dateParam = dateType === DateType/* EARTH_DAY */.m ? "earth_date=".concat(earthDate) : "sol=".concat(sol);
+            dateParam = dateType === DateType/* EARTH_DAY */.m ? "earth_date=".concat(date) : "sol=".concat(sol);
             params = camera !== "" ? "&camera=".concat(camera) : "";
             photosUrl = "".concat(basePhotosUrl, "/photos?").concat(dateParam).concat(params, "&page=").concat(page, "&api_key=").concat(api_key);
-            _context2.next = 7;
+            _context2.next = 8;
             return fetch(photosUrl);
 
-          case 7:
+          case 8:
             res = _context2.sent;
-            _context2.next = 10;
+            _context2.next = 11;
             return res.json();
 
-          case 10:
+          case 11:
             data = _context2.sent;
-            return _context2.abrupt("return", data.photos);
+            rawPhotos = data.photos;
+            newPhotos = rawPhotos.map(mappings.mapPhoto);
+            return _context2.abrupt("return", newPhotos);
 
-          case 12:
+          case 15:
           case "end":
             return _context2.stop();
         }

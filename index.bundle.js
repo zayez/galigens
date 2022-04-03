@@ -364,7 +364,7 @@ var imageLoaderReducer = function imageLoaderReducer(prev, cur) {
   var image;
   var p = new Promise(function (resolve, reject) {
     image = new Image();
-    image.src = cur.img_src;
+    image.src = cur.imgSrc;
     image.addEventListener("load", function () {
       resolve(true);
     });
@@ -425,7 +425,7 @@ var selectRover = function selectRover(id) {
 var fetchRovers = function fetchRovers() {
   return /*#__PURE__*/function () {
     var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch, getState) {
-      var rawRovers;
+      var rawRovers, rovers;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -437,9 +437,12 @@ var fetchRovers = function fetchRovers() {
 
             case 4:
               rawRovers = _context.sent;
-              dispatch(getRoversSuccess(rawRovers));
+              rovers = rawRovers.sort(function (a, b) {
+                return b.landingDate.getTime() - a.landingDate.getTime();
+              });
+              dispatch(getRoversSuccess(rovers));
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -528,10 +531,10 @@ var GalleryItem = function GalleryItem(_ref) {
   return /*#__PURE__*/react.createElement("div", {
     className: "gallery-item"
   }, /*#__PURE__*/react.createElement("a", {
-    href: photo.img_src,
+    href: photo.imgSrc,
     onClick: onClick
   }, /*#__PURE__*/react.createElement("img", {
-    src: photo.img_src
+    src: photo.imgSrc
   })));
 };
 
@@ -1016,7 +1019,7 @@ __webpack_async_result__();
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7294);
 /* harmony import */ var _types_DateType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1984);
-/* harmony import */ var _common_CustomDate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(145);
+/* harmony import */ var _common_CustomDate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5107);
 
 
 
@@ -1027,14 +1030,16 @@ var HeaderFilters = function HeaderFilters(_ref) {
       dateType = _ref.dateType,
       onDateTypeChange = _ref.onDateTypeChange,
       onCameraChange = _ref.onCameraChange;
+  var minDate = new Date(rover.landingDate).toISOString().split("T")[0];
+  var maxDate = new Date(rover.maxDate).toISOString().split("T")[0];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header-filters"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_common_CustomDate__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     type: dateType,
-    minDate: rover.landing_date,
-    maxDate: rover.max_date,
+    minDate: minDate,
+    maxDate: maxDate,
     minSol: 0,
-    maxSol: rover.max_sol
+    maxSol: rover.maxSol
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "filter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1072,7 +1077,7 @@ var HeaderFilters = function HeaderFilters(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
       value: camera.name,
       key: camera.id
-    }, "".concat(camera.full_name), " ");
+    }, "".concat(camera.fullname), " ");
   })))));
 };
 
@@ -1085,7 +1090,7 @@ var HeaderFilters = function HeaderFilters(_ref) {
 
 "use strict";
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7294);
-/* harmony import */ var _common_CustomDate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(145);
+/* harmony import */ var _common_CustomDate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5107);
 
 
 
@@ -1096,10 +1101,10 @@ var MainFilter = function MainFilter(_ref) {
     className: "main-filter"
   }, /*#__PURE__*/React.createElement(CustomDate, {
     type: dateType,
-    minDate: rover.landing_date,
-    maxDate: rover.max_date,
+    minDate: rover.landingDate,
+    maxDate: rover.maxDate,
     minSol: 0,
-    maxSol: rover.max_sol
+    maxSol: rover.maxSol
   }));
 };
 
@@ -1222,7 +1227,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7294);
-/* harmony import */ var _helpers_roverUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4293);
+/* harmony import */ var _utils_roverUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7161);
 /* harmony import */ var _Gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5930);
 /* harmony import */ var _Filters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8146);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Gallery__WEBPACK_IMPORTED_MODULE_2__, _Filters__WEBPACK_IMPORTED_MODULE_3__]);
@@ -1251,7 +1256,7 @@ var RoverPage = function RoverPage(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "rover-image"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: (0,_helpers_roverUtils__WEBPACK_IMPORTED_MODULE_1__/* .getRoverImage */ .Z)(rover.name)
+      src: (0,_utils_roverUtils__WEBPACK_IMPORTED_MODULE_1__/* .getRoverImage */ .Z)(rover.name)
     })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "rover-page"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Filters__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -1335,8 +1340,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     initializeFilters: function initializeFilters(rover) {
       dispatch((0,_actions_filtersActions__WEBPACK_IMPORTED_MODULE_5__/* .setFilters */ .rr)({
-        earthDate: rover.max_date,
-        sol: rover.max_sol
+        earthDate: rover.maxDate,
+        sol: rover.maxSol
       }));
     }
   };
@@ -1376,26 +1381,19 @@ var opportunity = __webpack_require__(7373);
 var curiosity = __webpack_require__(2590);
 // EXTERNAL MODULE: ./src/assets/images/rovers/perseverance/perseverance.jpg
 var perseverance = __webpack_require__(5414);
+// EXTERNAL MODULE: ./src/utils/dateUtils.js
+var dateUtils = __webpack_require__(2845);
 ;// CONCATENATED MODULE: ./src/components/Rover/RoverDetails.js
+
 
 
 var RoverDetails = function RoverDetails(_ref) {
   var rover = _ref.rover;
-  var minDate = new Date(rover.landing_date);
-  var maxDate = new Date(rover.max_date);
   return /*#__PURE__*/react.createElement("div", {
     className: "rover-description"
   }, /*#__PURE__*/react.createElement("table", {
     className: "rover-description-table"
-  }, /*#__PURE__*/react.createElement("tbody", null, /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Landing date"), /*#__PURE__*/react.createElement("td", null, minDate.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  }))), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Last report"), /*#__PURE__*/react.createElement("td", null, maxDate.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  }))), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Mission clock"), /*#__PURE__*/react.createElement("td", null, rover.max_sol, " sols")), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Raw photos"), /*#__PURE__*/react.createElement("td", null, rover.total_photos)), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Status"), /*#__PURE__*/react.createElement("td", null, rover.status)))));
+  }, /*#__PURE__*/react.createElement("tbody", null, /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Landing date"), /*#__PURE__*/react.createElement("td", null, (0,dateUtils/* toLocaleDate */.v)(rover.landingDate))), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Last report"), /*#__PURE__*/react.createElement("td", null, (0,dateUtils/* toLocaleDate */.v)(rover.maxDate))), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Mission clock"), /*#__PURE__*/react.createElement("td", null, rover.maxSol, " sols")), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Raw photos"), /*#__PURE__*/react.createElement("td", null, rover.totalPhotos)), /*#__PURE__*/react.createElement("tr", null, /*#__PURE__*/react.createElement("td", null, "Status"), /*#__PURE__*/react.createElement("td", null, rover.status)))));
 };
 
 /* harmony default export */ const Rover_RoverDetails = (RoverDetails);
@@ -1566,7 +1564,7 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 145:
+/***/ 5107:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1582,7 +1580,7 @@ var react = __webpack_require__(7294);
 var es = __webpack_require__(8216);
 // EXTERNAL MODULE: ./src/actions/filtersActions.js
 var filtersActions = __webpack_require__(8454);
-;// CONCATENATED MODULE: ./src/helpers/keyboardUtils.js
+;// CONCATENATED MODULE: ./src/utils/keyboardUtils.js
 var isValidNumericKey = function isValidNumericKey(event) {
   var e = event || window.event;
   var key = e.keyCode || e.which; // Backspace and Tab and Enter
@@ -1614,7 +1612,10 @@ var isValidNumericKey = function isValidNumericKey(event) {
 };
 // EXTERNAL MODULE: ./src/types/DateType.js
 var DateType = __webpack_require__(1984);
+// EXTERNAL MODULE: ./src/utils/dateUtils.js
+var dateUtils = __webpack_require__(2845);
 ;// CONCATENATED MODULE: ./src/components/common/CustomDate.js
+
 
 
 
@@ -1701,6 +1702,7 @@ var EarthDate = function EarthDate(_ref3) {
       min = _ref3.min,
       max = _ref3.max,
       setDate = _ref3.setDate;
+  var dateSanitized = (0,dateUtils/* formatDate */.p)(new Date(date));
   return /*#__PURE__*/react.createElement("div", {
     className: "filter"
   }, /*#__PURE__*/react.createElement("div", {
@@ -1709,7 +1711,7 @@ var EarthDate = function EarthDate(_ref3) {
     className: "filter-body"
   }, /*#__PURE__*/react.createElement("input", {
     type: "date",
-    value: date,
+    value: dateSanitized,
     min: min,
     max: max,
     onChange: function onChange(e) {
@@ -1741,33 +1743,6 @@ var EmptyList = function EmptyList() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EmptyList);
-
-/***/ }),
-
-/***/ 4293:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ getRoverImage)
-/* harmony export */ });
-/* harmony import */ var _assets_images_rovers_spirit_spirit_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6277);
-/* harmony import */ var _assets_images_rovers_opportunity_opportunity_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7373);
-/* harmony import */ var _assets_images_rovers_curiosity_curiosity_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2590);
-/* harmony import */ var _assets_images_rovers_perseverance_perseverance_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5414);
-
-
-
-
-var imageRovers = {
-  spirit: _assets_images_rovers_spirit_spirit_jpg__WEBPACK_IMPORTED_MODULE_0__,
-  opportunity: _assets_images_rovers_opportunity_opportunity_jpg__WEBPACK_IMPORTED_MODULE_1__,
-  curiosity: _assets_images_rovers_curiosity_curiosity_jpg__WEBPACK_IMPORTED_MODULE_2__,
-  perseverance: _assets_images_rovers_perseverance_perseverance_jpg__WEBPACK_IMPORTED_MODULE_3__
-};
-var getRoverImage = function getRoverImage(name) {
-  return imageRovers[name.toLowerCase()];
-};
 
 /***/ }),
 
@@ -2234,6 +2209,65 @@ var SOL_DAY = "SOL_DAY";
 /* harmony export */   "J": () => (/* binding */ SPINNER_TYPE)
 /* harmony export */ });
 var SPINNER_TYPE = "SPINNER_TYPE";
+
+/***/ }),
+
+/***/ 2845:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "p": () => (/* binding */ formatDate),
+/* harmony export */   "v": () => (/* binding */ toLocaleDate)
+/* harmony export */ });
+// Credits: https://bobbyhadz.com/blog/javascript-format-date-yyyy-mm-dd
+var defaultLocalDateOpts = {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+};
+function formatDate() {
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
+  var newDate = new Date(date);
+  return [newDate.getFullYear(), padTo2Digits(newDate.getMonth() + 1), padTo2Digits(newDate.getDate())].join("-");
+}
+function toLocaleDate() {
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
+  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultLocalDateOpts;
+  var newDate = new Date(date).toLocaleDateString(undefined, opts);
+  return newDate;
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, "0");
+}
+
+/***/ }),
+
+/***/ 7161:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ getRoverImage)
+/* harmony export */ });
+/* harmony import */ var _assets_images_rovers_spirit_spirit_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6277);
+/* harmony import */ var _assets_images_rovers_opportunity_opportunity_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7373);
+/* harmony import */ var _assets_images_rovers_curiosity_curiosity_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2590);
+/* harmony import */ var _assets_images_rovers_perseverance_perseverance_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5414);
+
+
+
+
+var imageRovers = {
+  spirit: _assets_images_rovers_spirit_spirit_jpg__WEBPACK_IMPORTED_MODULE_0__,
+  opportunity: _assets_images_rovers_opportunity_opportunity_jpg__WEBPACK_IMPORTED_MODULE_1__,
+  curiosity: _assets_images_rovers_curiosity_curiosity_jpg__WEBPACK_IMPORTED_MODULE_2__,
+  perseverance: _assets_images_rovers_perseverance_perseverance_jpg__WEBPACK_IMPORTED_MODULE_3__
+};
+var getRoverImage = function getRoverImage(name) {
+  return imageRovers[name.toLowerCase()];
+};
 
 /***/ }),
 
@@ -9631,6 +9665,14 @@ var map = {
 	"./index.js": [
 		1071
 	],
+	"./mappings": [
+		3616,
+		616
+	],
+	"./mappings.js": [
+		3616,
+		616
+	],
 	"./mockAPI": [
 		1971,
 		971
@@ -9672,7 +9714,7 @@ module.exports = webpackAsyncContext;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "0ee5547a7e8e33827020.jpg";
+module.exports = __webpack_require__.p + "93d8c4cef68fb7252e03.jpg";
 
 /***/ }),
 
@@ -9680,7 +9722,7 @@ module.exports = __webpack_require__.p + "0ee5547a7e8e33827020.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "1ffd6cbe8ec6e127f2d6.jpg";
+module.exports = __webpack_require__.p + "dbc7dcfee2624b4aafe9.jpg";
 
 /***/ }),
 
@@ -9688,7 +9730,7 @@ module.exports = __webpack_require__.p + "1ffd6cbe8ec6e127f2d6.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "15ff9aa92765f37577f4.jpg";
+module.exports = __webpack_require__.p + "e3ee9a600334f95b2bba.jpg";
 
 /***/ }),
 
@@ -9696,7 +9738,7 @@ module.exports = __webpack_require__.p + "15ff9aa92765f37577f4.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "90c693164742e1fb8b26.jpg";
+module.exports = __webpack_require__.p + "41824c80a234f487b0ba.jpg";
 
 /***/ }),
 
