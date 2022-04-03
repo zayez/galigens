@@ -1,5 +1,5 @@
 import React from "react"
-import { getRoverImage } from "../../helpers/roverUtils"
+import { getRoverImage } from "../../utils/roverUtils"
 import Gallery from "../Gallery"
 import "./rover.sss"
 import RoverFilters from "./Filters"
