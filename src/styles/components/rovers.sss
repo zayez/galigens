@@ -29,6 +29,7 @@
   border: 2px solid var(--card-border-color)
   display: flex
   flex-wrap: wrap
+  flex-flow: column
   background: var(--card-bg-color)
 
   & > *
@@ -37,29 +38,27 @@
   &:hover
     border-color: var(--accent-color)
 
-.card-title
-  text-align: center
 
 .card-content
   padding: 1rem 1rem
   display: flex
   flex-flow: column
   justify-content: center
+  order: 2
 
-  @media (--sm-bp)
-    flex-basis: 60%
+.card-image
+  order: 1
+  & img
+    height: 100%
+    object-fit: cover
+
+.card-title
+  text-align: center
 
 .card-body
   display: flex
   justify-content: center
 
-.card-image
-  & img
-    height: 100%
-    object-fit: cover
-
-  @media (--sm-bp)
-    flex-basis: 40%
 
 /* Transition animations */
 .rover-item-enter
