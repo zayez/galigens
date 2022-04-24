@@ -28,7 +28,9 @@ const roversReducer = (state = initialState, action) => {
       }
 
     case SELECT_ROVER:
-      const selectedRover = state.rovers.find((r) => r.id === action.payload)
+      const selectedRover = state.rovers.find(
+        (r) => r.name.toLowerCase() === action.payload
+      )
       return {
         ...state,
         selectedRover,

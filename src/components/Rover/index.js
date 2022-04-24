@@ -7,10 +7,10 @@ import { setFilters } from "../../actions/filtersActions"
 import RoverPage from "./RoverPage"
 
 const Rover = ({ selectedRover, setRover, initializeFilters }) => {
-  const { id } = useParams()
+  const { name } = useParams()
 
   useEffect(() => {
-    setRover(Number(id))
+    setRover(name)
   }, [])
 
   useEffect(() => {

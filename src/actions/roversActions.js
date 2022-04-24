@@ -14,9 +14,9 @@ const getRoversSuccess = (rovers) => ({
   payload: rovers,
 })
 
-export const selectRover = (id) => ({
+export const selectRover = (name) => ({
   type: SELECT_ROVER,
-  payload: id,
+  payload: name,
 })
 
 export const fetchRovers = () => async (dispatch, getState) => {

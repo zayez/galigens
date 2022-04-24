@@ -24,7 +24,7 @@ const AnimatedApp = () => {
           {/* <Route path="/" exact element={<Home />} /> */}
           <Route path="/" element={<Rovers />} />
           <Route path="/about" element={<About />} />
-          <Route path="/rover/:id" element={<Rover />} />
+          <Route path="/rover/:name" element={<Rover />} />
         </Routes>
       </CSSTransition>
     </TransitionGroup>
