@@ -46,6 +46,7 @@ var AnimatedApp = function AnimatedApp() {
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__/* .useLocation */ .TH)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
     appear: true,
+    enter: true,
     exit: false
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     key: location.pathname,
@@ -60,7 +61,7 @@ var AnimatedApp = function AnimatedApp() {
     path: "/about",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pages_About__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__/* .Route */ .AW, {
-    path: "/rover/:id",
+    path: "/rover/:name",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Rover__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null)
   }))));
 };
@@ -416,10 +417,10 @@ var getRoversSuccess = function getRoversSuccess(rovers) {
   };
 };
 
-var selectRover = function selectRover(id) {
+var selectRover = function selectRover(name) {
   return {
     type: SELECT_ROVER,
-    payload: id
+    payload: name
   };
 };
 var fetchRovers = function fetchRovers() {
@@ -1241,39 +1242,32 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Gal
 var RoverPage = function RoverPage(_ref) {
   var rover = _ref.rover,
       earthDate = _ref.earthDate;
-
-  if (rover) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "container content-main"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-heading"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-name"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Selected rover: ", rover.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-avatar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-image"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: (0,_utils_roverUtils__WEBPACK_IMPORTED_MODULE_1__/* .getRoverImage */ .Z)(rover.name)
-    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-page"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Filters__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-      rover: rover
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "rover-gallery"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "sub-heading"
-    }, "Gallery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Gallery__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-      rover: rover,
-      earthDate: earthDate
-    }))));
-  } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: ""
-    }, "Loading");
-  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "container content-main"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-heading"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-name"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Selected rover: ", rover.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-avatar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: (0,_utils_roverUtils__WEBPACK_IMPORTED_MODULE_1__/* .getRoverImage */ .Z)(rover.name)
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-page"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Filters__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    rover: rover
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "rover-gallery"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "sub-heading"
+  }, "Gallery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Gallery__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    rover: rover,
+    earthDate: earthDate
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RoverPage);
@@ -1291,11 +1285,12 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7294);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6974);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6974);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8216);
 /* harmony import */ var _actions_roversActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8684);
-/* harmony import */ var _actions_filtersActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8454);
+/* harmony import */ var _actions_filtersActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8454);
 /* harmony import */ var _RoverPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3212);
+/* harmony import */ var _Loader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2592);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_actions_roversActions__WEBPACK_IMPORTED_MODULE_2__, _RoverPage__WEBPACK_IMPORTED_MODULE_3__]);
 ([_actions_roversActions__WEBPACK_IMPORTED_MODULE_2__, _RoverPage__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
@@ -1305,31 +1300,57 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_act
 
 
 
+
 var Rover = function Rover(_ref) {
   var selectedRover = _ref.selectedRover,
+      earthDate = _ref.earthDate,
+      isLoading = _ref.isLoading,
       setRover = _ref.setRover,
       initializeFilters = _ref.initializeFilters;
 
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__/* .useParams */ .UO)(),
-      id = _useParams.id;
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__/* .useParams */ .UO)(),
+      name = _useParams.name;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setRover(Number(id));
+    setRover(name);
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (selectedRover) {
       initializeFilters(selectedRover);
     }
   }, [selectedRover]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(RoverWrapped, {
+    rover: selectedRover,
+    earthDate: earthDate,
+    isLoading: isLoading
+  });
+};
+
+var RoverWrapped = function RoverWrapped(_ref2) {
+  var rover = _ref2.rover,
+      earthDate = _ref2.earthDate,
+      isLoading = _ref2.isLoading;
+
+  if (isLoading || rover === null) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "loader-wrapper"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Loader__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+      size: "large"
+    }));
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RoverPage__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-    rover: selectedRover
+    rover: rover,
+    earthDate: earthDate
   });
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
     rovers: state.rovers.rovers,
-    selectedRover: state.rovers.selectedRover
+    selectedRover: state.rovers.selectedRover,
+    earthdate: state.filters.earthDate,
+    isLoading: state.filters.isLoading
   };
 };
 
@@ -1339,7 +1360,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0,_actions_roversActions__WEBPACK_IMPORTED_MODULE_2__/* .selectRover */ .e2)(id));
     },
     initializeFilters: function initializeFilters(rover) {
-      dispatch((0,_actions_filtersActions__WEBPACK_IMPORTED_MODULE_5__/* .setFilters */ .rr)({
+      dispatch((0,_actions_filtersActions__WEBPACK_IMPORTED_MODULE_6__/* .setFilters */ .rr)({
         earthDate: rover.maxDate,
         sol: rover.maxSol
       }));
@@ -1373,14 +1394,8 @@ var CSSTransition = __webpack_require__(8983);
 var react_router_dom = __webpack_require__(9711);
 // EXTERNAL MODULE: ./node_modules/react-router/index.js
 var react_router = __webpack_require__(6974);
-// EXTERNAL MODULE: ./src/assets/images/rovers/spirit/spirit.jpg
-var spirit = __webpack_require__(6277);
-// EXTERNAL MODULE: ./src/assets/images/rovers/opportunity/opportunity.jpg
-var opportunity = __webpack_require__(7373);
-// EXTERNAL MODULE: ./src/assets/images/rovers/curiosity/curiosity.jpg
-var curiosity = __webpack_require__(2590);
-// EXTERNAL MODULE: ./src/assets/images/rovers/perseverance/perseverance.jpg
-var perseverance = __webpack_require__(5414);
+// EXTERNAL MODULE: ./src/utils/roverUtils.js
+var roverUtils = __webpack_require__(7161);
 // EXTERNAL MODULE: ./src/utils/dateUtils.js
 var dateUtils = __webpack_require__(2845);
 ;// CONCATENATED MODULE: ./src/components/Rover/RoverDetails.js
@@ -1403,21 +1418,14 @@ var RoverDetails = function RoverDetails(_ref) {
 
 
 
-
-
-var imageRovers = {
-  spirit: spirit,
-  opportunity: opportunity,
-  curiosity: curiosity,
-  perseverance: perseverance
-};
-
 var RoverItem = function RoverItem(_ref) {
   var rover = _ref.rover;
+  var roverLink = "/rover/".concat(rover.name.toLowerCase());
+  var roverImage = (0,roverUtils/* getRoverImage */.Z)(rover.name);
   var navigate = (0,react_router/* useNavigate */.s0)();
 
   var navigateToRover = function navigateToRover() {
-    return navigate("/rover/".concat(rover.id));
+    return navigate(roverLink);
   };
 
   return /*#__PURE__*/react.createElement("div", {
@@ -1432,7 +1440,7 @@ var RoverItem = function RoverItem(_ref) {
   }, /*#__PURE__*/react.createElement("h3", {
     className: "rover-title"
   }, /*#__PURE__*/react.createElement(react_router_dom/* Link */.rU, {
-    to: "/rover/".concat(rover.id)
+    to: roverLink
   }, rover.name))), /*#__PURE__*/react.createElement("div", {
     className: "card-body"
   }, /*#__PURE__*/react.createElement(Rover_RoverDetails, {
@@ -1440,9 +1448,9 @@ var RoverItem = function RoverItem(_ref) {
   }))), /*#__PURE__*/react.createElement("div", {
     className: "card-image"
   }, /*#__PURE__*/react.createElement(react_router_dom/* Link */.rU, {
-    to: "/rover/".concat(rover.id)
+    to: roverLink
   }, /*#__PURE__*/react.createElement("img", {
-    src: imageRovers[rover.name.toLowerCase()]
+    src: roverImage
   })))));
 };
 
@@ -2083,7 +2091,7 @@ var roversReducer = function roversReducer() {
 
     case _actions_roversActions__WEBPACK_IMPORTED_MODULE_1__/* .SELECT_ROVER */ .Hd:
       var selectedRover = state.rovers.find(function (r) {
-        return r.id === action.payload;
+        return r.name.toLowerCase() === action.payload;
       });
       return _objectSpread(_objectSpread({}, state), {}, {
         selectedRover: selectedRover
