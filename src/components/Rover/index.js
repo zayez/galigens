@@ -5,8 +5,15 @@ import { connect } from "react-redux"
 import { selectRover } from "../../actions/roversActions"
 import { setFilters } from "../../actions/filtersActions"
 import RoverPage from "./RoverPage"
+import Loader from "../Loader"
 
-const Rover = ({ selectedRover, setRover, initializeFilters }) => {
+const Rover = ({
+  selectedRover,
+  earthDate,
+  isLoading,
+  setRover,
+  initializeFilters,
+}) => {
   const { name } = useParams()
 
   useEffect(() => {
@@ -19,13 +26,33 @@ const Rover = ({ selectedRover, setRover, initializeFilters }) => {
     }
   }, [selectedRover])
 
-  return <RoverPage rover={selectedRover} />
+  return (
+    <RoverWrapped
+      rover={selectedRover}
+      earthDate={earthDate}
+      isLoading={isLoading}
+    />
+  )
+}
+
+const RoverWrapped = ({ rover, earthDate, isLoading }) => {
+  if (isLoading || rover === null) {
+    return (
+      <div className="loader-wrapper">
+        <Loader size="large" />
+      </div>
+    )
+  }
+
+  return <RoverPage rover={rover} earthDate={earthDate} />
 }
 
 const mapStateToProps = (state) => {
   return {
     rovers: state.rovers.rovers,
     selectedRover: state.rovers.selectedRover,
+    earthdate: state.filters.earthDate,
+    isLoading: state.filters.isLoading,
   }
 }
 
